@@ -1,1 +1,241 @@
-# opi
+# OPI: Exploring and Benchmarking Large Language Models for Protein Modeling
+[![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/LICENSE)
+[![Data License](https://img.shields.io/badge/Data%20License-CC%20By%20NC%204.0-red.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/DATA_LICENSE)
+[![Weight Diff License](https://img.shields.io/badge/Weight%20Diff%20License-CC%20By%20NC%204.0-yellow)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/WEIGHT_DIFF_LICENSE)
+
+## Overview
+____
+This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a protein instruction dataset as well as propose to explore and benckmark LLMs for protein modeling in protein biology.
+
+### Our vision and roadmap
+
+
+### Usage and License Notices
+[LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
+
+
+## OPI dataset construction pipeline
+____
+The OPI dataset is curated on our own by extracting key informatoin from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplenmentary material of our manuscript which has been submitted to NeurIPS 2023 Datasets and Benchmarks. 
+
+## OPI dataset release
+____
+**How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://drive.google.com/drive/folders/1l04jJSOb7BrlbtE9Sy9VzUHCQRtOBGiq?usp=drive_link) from Google Drive. 
+Once finished downloading the OPI_DATA, put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** floder in this repo. 
+
+The **OPI dataset folder structure** is as follows:
+```
+./OPI_DATA/
+├── AP
+│   ├── Function
+│   │   ├── test
+│   │   │   ├── CASPSimilarSeq_function_valid.jsonl
+│   │   │   ├── IDFilterSeq_function_valid.jsonl
+│   │   │   └── UniProtSeq_function_valid.jsonl
+│   │   └── train
+│   │       ├── function_description_train.json
+│   │       └── function_description_train_0.01.json
+│   ├── GO
+│   │   ├── test
+│   │   │   ├── CASPSimilarSeq_go_valid.jsonl
+│   │   │   ├── IDFilterSeq_go_valid.jsonl
+│   │   │   └── UniProtSeq_go_valid.jsonl
+│   │   └── train
+│   │       ├── go_terms_train.json
+│   │       └── go_terms_train_0.01.json
+│   └── Keywords
+│       ├── test
+│       │   ├── CASPSimilarSeq_keywords_valid.jsonl
+│       │   ├── IDFilterSeq_keywords_valid.jsonl
+│       │   └── UniProtSeq_keywords_valid.jsonl
+│       └── train
+│           ├── keywords_train.json
+│           └── keywords_train_0.01.json
+├── KM
+│   ├── gID2Cancer
+│   │   ├── test
+│   │   │   └── gene_ID_to_cancer_new_test.jsonl
+│   │   └── train
+│   │       └── gene_ID_to_cancer_new_train.json
+│   ├── gName2Cancer
+│   │   ├── test
+│   │   │   └── gene_name_to_cancer_new_test.jsonl
+│   │   └── train
+│   │       └── gene_name_to_cancer_new_train.json
+│   └── gName2Tissue
+│       ├── test
+│       │   └── tissue_valid_manner2.jsonl
+│       └── train
+│           └── tissue_train_manner2.json
+└── SU
+    ├── EC_number
+    │   ├── test
+    │   │   ├── CLEAN_EC_number_halogenase_test.jsonl
+    │   │   ├── CLEAN_EC_number_new_test.jsonl
+    │   │   └── CLEAN_EC_number_price_test.jsonl
+    │   └── train
+    │       ├── CLEAN_EC_number_split100_train.json
+    │       ├── CLEAN_EC_number_split10_train.json
+    │       ├── CLEAN_EC_number_split30_train.json
+    │       ├── CLEAN_EC_number_split50_train.json
+    │       └── CLEAN_EC_number_split70_train.json
+    ├── Fold_type-Remote
+    │   ├── test
+    │   │   └── Remote_valid.jsonl
+    │   └── train
+    │       └── Remote_train.json
+    └── Subcellular_location
+        ├── test
+        │   ├── location_valid.jsonl
+        └── train
+            └── location_train.json
+```
+
+The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all the 'train.json' files of the nine tasks into one single file, e.g., OPI_full.json, please do like this:
+```
+python merge_nine_opi_tasks_train.py --output OPI_full.json
+```
+
+Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protein instrucitons. You can also get the [`OPI_full.json`](https://drive.google.com/file/d/1FPg3VtU2nSVx1CnsjJyGCtspBV1ozyjx/view?usp=drive_link) from Google Drive.
+
+## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
+____
+For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca).
+
+### 1. Galactica fine-tuning with OPI
+
+Training script:
+```
+#!/bin/bash
+
+OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_galai/train.py \
+    --model_name_or_path /path/to/galactica-$3 \
+    --data_path  /path/to/CLEAN_EC_number_$4_train.json \
+    --bf16 True \
+    --output_dir /path/to/galai_ft_CLEAN_EC_number_$4_$3_e$5 \
+    --num_train_epochs $5 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 8 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 2000 \
+    --save_total_limit 1 \
+    --learning_rate 2e-5 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
+    --deepspeed "./configs/default_offload_opt_param.json" \
+    --tf32 True
+
+```
+
+To start fine-tuning Galactica, please use the following script:
+```
+bash train_galai/train_EC_number.sh 1 0 6.7b split70 3 
+```
+
+Explanation of such bash arguments: \
+```
+1: nnodes \
+0: node_rank \
+6.7b: model size of Galactica \
+split70: split number of EC_number training set \
+3: total training epochs
+Note: the argument 'split70' is only suitable to EC_number prdiction task, it is not necesseary for other tasks. 
+```
+
+### 2. LLaMA fine-tuning with OPI
+
+Training script:
+```
+#!/bin/bash
+
+OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
+    --model_name_or_path /share/project/xiaohongwang/LLM_checkpoints/llama/hf_version/llama-$3 \
+    --data_path  /share/project/xiaohongwang/OPI_DATA/SU/EC_number/train/CLEAN_EC_number_$4_train.json \
+    --bf16 True \
+    --output_dir /share/project/xiaohongwang/LLM_checkpoints/llama_ft_opi/llama_ft_CLEAN_EC_number_$4_$3_e$5 \
+    --num_train_epochs $5 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 16 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 2000 \
+    --save_total_limit 1 \
+    --learning_rate 2e-5 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
+    --deepspeed "./configs/default_offload_opt_param.json" \
+    --tf32 True
+```
+
+To start fine-tuning LLaMA, please use the following script:
+```
+bash train_llama/train_EC_number.sh 1 0 7b split70 3 
+```
+
+Explanation of such bash arguments: \
+```
+1: nnodes \
+0: node_rank \
+7b: model size of LLaMA \
+split70: split number of EC_number training set
+3: total training epochs
+Note: the argument 'split70' is only suitable to EC_number prdiction task, it is not necesseary for other tasks. 
+```
+
+**Note**: As for the training, we take the suggestion to address out-of-memory issue from [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca), using DeepSpeed stage-3 with offload.
+
+### 3. Convert DeepSpeed-format weights to HuggingFace-format
+Once finished instruction tuning, we convert the DeepSpeed-format checkpoints to PyTorch-format, i.e., **pytorch_model.bin**, using the following script:
+```
+cd checkpoints_saved_folder
+python zero_to_fp32.py . pytorch_model.bin
+```
+
+### 4. Split pytorch_model.bin into chunks to speedup loading for inference
+After step 3, you will get the **pytorch_model.bin** file, you can split it to small chunks, e.g., pytorch_model-00001-of-00004.bin
+pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing.
+```
+cd model_split
+python model_split.py --model_idx EC_6.7b
+```
+The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
+
+### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
+[OPI-instruction-tuned model](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) can be accessed from Google Drive. In this repo we only release the OPI-instruction-tuned Galactica-6.7B model.
+
+## Evaluation with OPI-instruction-tuned models
+For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
+____
+### 1. Evaluation of Galactica
+We evaluate OPI-instruction-tuned Galactica-6.7B model and origional Galactica-6.7B model.
+
+**For OPI-instruction-tuned Galactica-6.7B model, please use the following script:**
+```
+cd eval_galai
+python eval_galai.py --model_idx EC_6.7b --gpus=0
+```
+
+**For the original Galactica-6.7B model, please use the following script:**
+```
+```
+
+### 2. Evaluation of Alpaca
+For comparison, we evaluate Alpaca-7B model and [Galpaca-6.7B](https://huggingface.co/GeorgiaTechResearchInstitute/galpaca-6.7b) model.
+
+As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/tatsu-lab/alpaca-7b-wdiff) from HuggingFace, which is the weight diff for [Stanford Alpaca-7B](https://github.com/tatsu-lab/stanford_alpaca/), then recover the original Alpaca-7B weights using the conversion script provided by [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca).
+
+The same script is used for evaluating Alpaca-7B and Galpaca-6.7B model, just by setting a different model_idx for a different model.
+```
+cd eval_alpaca
+python eval_alpaca.py --model_idx alpaca-7b-recover --gpus=0
+```
+
+### 3. Evaluation of LLaMA
+The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model, just by setting a different model_idx for a different model.
+```
+cd eval_llama
+python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
+```
