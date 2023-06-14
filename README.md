@@ -85,7 +85,7 @@ The **OPI dataset folder structure** is as follows:
 The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all or several 'train.json' files of the nine tasks into one single file, please do like this:
 ```
 cd OPI_DATA
-python merge_nine_opi_tasks_train.py --output OPI_full.json
+python merge_nine_opi_tasks_train.py --output OPI_merged.json
 ```
 
 
@@ -191,7 +191,7 @@ Then you will get a checkpoint folder suffixed with "**chunked**", which you can
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
 In this repo, we release the OPI-Galactica-6.7B model for the task **Function Keywords Prediction**, which can be accessed from [Google Drive](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
 
-## Evaluation tasks
+## Nine Evaluation tasks
 
 For benchamarking, we design 3 types of evaluation tasks, each of which contains 3 specific ones, as shown in the following table.
 
