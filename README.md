@@ -16,7 +16,7 @@ The OPI dataset is curated on our own by extracting key informatoin from [Swiss-
 
 ## OPI dataset release
 **How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://drive.google.com/drive/folders/1l04jJSOb7BrlbtE9Sy9VzUHCQRtOBGiq?usp=drive_link) from Google Drive. 
-Once finished downloading the OPI_DATA, put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** floder in this repo. 
+Once finished downloading the **OPI_DATA** from Google Drive, please put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** folder in this repo. 
 
 The **OPI dataset folder structure** is as follows:
 ```
@@ -92,6 +92,7 @@ python merge_nine_opi_tasks_train.py --output OPI_full.json
 ```
 
 Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protein instrucitons. You can also get the [`OPI_full.json`](https://drive.google.com/file/d/1FPg3VtU2nSVx1CnsjJyGCtspBV1ozyjx/view?usp=drive_link) from Google Drive.
+
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
 For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
@@ -198,7 +199,23 @@ python model_split.py --model_idx EC_6.7b
 The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-Currently, we release the OPI-Galactica-6.7B-keywords model, which can be accessed from [Google Drive](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) and [HuggingFace](...).
+In this repo, we release the OPI-Galactica-6.7B model for the task **Function Keywords Prediction**, which can be accessed from [Google Drive](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
+
+## Evaluation tasks
+
+For benchamarking, we disign 3 types of evaluation tasks, each of which contain 3 specific ones, as shown in the following table.
+
+| Task Type                     | Task Name                              |
+| ----------------------------- | -------------------------------------- |
+| Sequence Understanding        |EC Number Prediction         |
+| Sequence Understanding        |Fold Type Prediction         |
+| Sequence Understanding        |Subcellular Localization Prediction  |
+| Annotation Prediction         |Function Keywords Prediction         |
+| Annotation Prediction         |Gene Ontology(GO) Terms Prediction   |
+| Annotation Prediction         |Function Description Prediction      |
+| Knowledge Mining              |Tissue Location Prediction from Gene Symbol  |
+| Knowledge Mining              |Cancer Prediction from Gene Symbol   |
+| Knowledge Mining              |Cancer Prediction from Gene Name     |
 
 ## Evaluation with OPI-instruction-tuned models
 For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
