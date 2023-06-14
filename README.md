@@ -6,12 +6,11 @@
 ## Overview
 This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a protein instruction dataset as well as propose to explore and benckmark LLMs for protein modeling in protein biology.
 
-### Our vision and roadmap
-**Open Protein Instructions(OPI) is initial part of our Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI) and Open RNA Instructions(ORI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilite research in AI for Life Science community. We hope to reform the way the research is conducted in this community, by bridging LLMs and biology domain konwledge.**
-
 ### Usage and License Notices
 [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
+## Our vision and roadmap
+***Open Protein Instructions(OPI) is initial part of our Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI) and Open RNA Instructions(ORI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilite research in AI for Life Science community. We hope to reform the way the research is conducted in this community, by bridging LLMs and biology domain konwledge.***
 
 ## OPI dataset construction pipeline
 The OPI dataset is curated on our own by extracting key informatoin from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplenmentary material of our manuscript which has been submitted to NeurIPS 2023 Datasets and Benchmarks. 
@@ -200,7 +199,7 @@ python model_split.py --model_idx EC_6.7b
 The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-With regard to the OPI-instruction-tuned model, please contact us for the access.
+Currently, we release the OPI-Galactica-6.7B-keywords model, which can be accessed from [Google Drive](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) and [HuggingFace](...).
 
 ## Evaluation with OPI-instruction-tuned models
 For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
