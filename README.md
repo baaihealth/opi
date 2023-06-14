@@ -4,7 +4,6 @@
 [![Weight Diff License](https://img.shields.io/badge/Weight%20Diff%20License-CC%20By%20NC%204.0-yellow)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/WEIGHT_DIFF_LICENSE)
 
 ## Overview
-____
 This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a protein instruction dataset as well as propose to explore and benckmark LLMs for protein modeling in protein biology.
 
 ### Our vision and roadmap
@@ -15,11 +14,9 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 
 
 ## OPI dataset construction pipeline
-____
 The OPI dataset is curated on our own by extracting key informatoin from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplenmentary material of our manuscript which has been submitted to NeurIPS 2023 Datasets and Benchmarks. 
 
 ## OPI dataset release
-____
 **How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://drive.google.com/drive/folders/1l04jJSOb7BrlbtE9Sy9VzUHCQRtOBGiq?usp=drive_link) from Google Drive. 
 Once finished downloading the OPI_DATA, put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** floder in this repo. 
 
@@ -99,7 +96,6 @@ python merge_nine_opi_tasks_train.py --output OPI_full.json
 Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protein instrucitons. You can also get the [`OPI_full.json`](https://drive.google.com/file/d/1FPg3VtU2nSVx1CnsjJyGCtspBV1ozyjx/view?usp=drive_link) from Google Drive.
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
-____
 For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
 
 ### 1. Galactica fine-tuning with OPI
@@ -151,10 +147,10 @@ Training script:
 #!/bin/bash
 
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
-    --model_name_or_path /share/project/xiaohongwang/LLM_checkpoints/llama/hf_version/llama-$3 \
-    --data_path  /share/project/xiaohongwang/OPI_DATA/SU/EC_number/train/CLEAN_EC_number_$4_train.json \
+    --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
+    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_$4_train.json \
     --bf16 True \
-    --output_dir /share/project/xiaohongwang/LLM_checkpoints/llama_ft_opi/llama_ft_CLEAN_EC_number_$4_$3_e$5 \
+    --output_dir path/to/output/llama_ft_CLEAN_EC_number_$4_$3_e$5 \
     --num_train_epochs $5 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
@@ -204,11 +200,11 @@ python model_split.py --model_idx EC_6.7b
 The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-With regard to the OPI-instruction-tuned model, please contact us for the accesse.
+With regard to the OPI-instruction-tuned model, please contact us for the access.
 
 ## Evaluation with OPI-instruction-tuned models
 For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
-____
+
 ### 1. Evaluation of Galactica
 We evaluate OPI-instruction-tuned Galactica-6.7B model and origional Galactica-6.7B model.
 
@@ -220,6 +216,7 @@ python eval_galai.py --model_idx EC_6.7b --gpus=0
 
 **For the original Galactica-6.7B model, please use the following script:**
 ```
+cd eval_galai/infer_with_original_galai
 bash galactica_infer.sh
 ```
 
@@ -243,7 +240,5 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
 
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
-
-<!-- <img alt="OPI Demo" src="opi_demo.gif" width="600" /> -->
 
 ![OPI Demo](./opi_demo.gif)
