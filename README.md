@@ -100,7 +100,7 @@ Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protei
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
 ____
-For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca).
+For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
 
 ### 1. Galactica fine-tuning with OPI
 
@@ -196,7 +196,7 @@ python zero_to_fp32.py . pytorch_model.bin
 
 ### 4. Split pytorch_model.bin into chunks to speedup loading for inference
 After step 3, you will get the **pytorch_model.bin** file, you can split it to small chunks, e.g., pytorch_model-00001-of-00004.bin
-pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing.
+pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing. However, it is not a must thing, if you don't want.
 ```
 cd model_split
 python model_split.py --model_idx EC_6.7b
@@ -204,7 +204,7 @@ python model_split.py --model_idx EC_6.7b
 The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-[OPI-instruction-tuned model](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) can be accessed from Google Drive. In this repo we only release the OPI-instruction-tuned Galactica-6.7B model.
+With regard to the OPI-instruction-tuned model, please contact us for the accesse.
 
 ## Evaluation with OPI-instruction-tuned models
 For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
@@ -239,3 +239,11 @@ The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and 
 cd eval_llama
 python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
 ```
+
+## Demo
+We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
+
+<!-- mp4格式 -->
+<video id="video" controls="" preload="none" poster="cover">
+      <source id="mp4" src="./opi_demo.mp4" type="video/mp4">
+</videos>
