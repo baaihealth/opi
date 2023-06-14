@@ -2,15 +2,15 @@
 
 
 
-OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
-    --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
-    --data_path  ./OPI_DATA/KM/gID2Cancer/train/gene_ID_to_cancer_new_train.json \
+OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_galai/train.py \
+    --model_name_or_path path/to/galactica_base_model/galactica-$3 \
+    --data_path  ./OPI_DATA/KM/gSymbol2Cancer/train/gene_symbol_to_cancer_train.json \
     --bf16 True \
-    --output_dir path/to/output/llama_ft_opi/llama_ft_gene_ID_to_cancer_new_$3_e$4 \
+    --output_dir path/to/output/galai_ft_opi/galai_ft_gene_symbol_to_cancer_$3_e$4 \
     --num_train_epochs $4 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 16 \
+    --gradient_accumulation_steps 8 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 2000 \

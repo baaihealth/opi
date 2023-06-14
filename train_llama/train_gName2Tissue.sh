@@ -4,7 +4,7 @@
 
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
     --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
-    --data_path  ./OPI_DATA/KM/gName2Tissue/train/tissue_train_manner2.json \
+    --data_path  ./OPI_DATA/KM/gName2Tissue/train/gene_symbol_to_tissue_train.json \
     --bf16 True \
     --output_dir path/to/output/llama_ft_opi/llama_ft_tissue2_$3_e$4 \
     --num_train_epochs $4 \

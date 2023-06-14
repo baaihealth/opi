@@ -16,11 +16,11 @@ def main():
         "./AP/GO/train/go_terms_train.json",
         "./AP/Keywords/train/keywords_train.json",
         
-        "./KM/gSymbol2Cancer/train/gene_symbol_to_cancer_new_train.json",
-        "./KM/gName2Cancer/train/gene_name_to_cancer_new_train.json",
-        "./KM/gSymbol2Tissue/train/tissue_train_manner2.json",
+        "./KM/gSymbol2Cancer/train/gene_symbol_to_cancer_train.json",
+        "./KM/gName2Cancer/train/gene_name_to_cancer_train.json",
+        "./KM/gSymbol2Tissue/train/gene_symbol_to_tissue_train.json",
         
-        "./SU/EC_number/train/CLEAN_EC_number_split100_train.json",
+        "./SU/EC_number/train/CLEAN_EC_number_train.json",
         "./SU/Fold_type-Remote/train/Remote_train.json",
         "./SU/Subcellular_location/train/location_train.json"
     ]

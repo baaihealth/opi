@@ -4,10 +4,10 @@
 
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
     --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
-    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_$4_train.json \
+    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_train.json \
     --bf16 True \
-    --output_dir path/to/output/llama_ft_opi/llama_ft_CLEAN_EC_number_$4_$3_e$5 \
-    --num_train_epochs $5 \
+    --output_dir path/to/output/llama_ft_opi/llama_ft_CLEAN_EC_number_$3_e$4 \
+    --num_train_epochs $4 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 16 \

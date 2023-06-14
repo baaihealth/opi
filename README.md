@@ -49,19 +49,19 @@ The **OPI dataset folder structure** is as follows:
 ├── KM
 │   ├── gSymbol2Cancer
 │   │   ├── test
-│   │   │   └── gene_symbol_to_cancer_new_test.jsonl
+│   │   │   └── gene_symbol_to_cancer_test.jsonl
 │   │   └── train
-│   │       └── gene_symbol_to_cancer_new_train.json
+│   │       └── gene_symbol_to_cancer_train.json
 │   ├── gName2Cancer
 │   │   ├── test
-│   │   │   └── gene_name_to_cancer_new_test.jsonl
+│   │   │   └── gene_name_to_cancer_test.jsonl
 │   │   └── train
-│   │       └── gene_name_to_cancer_new_train.json
+│   │       └── gene_name_to_cancer_train.json
 │   └── gSymbol2Tissue
 │       ├── test
-│       │   └── tissue_valid_manner2.jsonl
+│       │   └── gene_symbol_to_tissue_valid.jsonl
 │       └── train
-│           └── tissue_train_manner2.json
+│           └── gene_symbol_to_tissue_train.json
 └── SU
     ├── EC_number
     │   ├── test
@@ -69,11 +69,7 @@ The **OPI dataset folder structure** is as follows:
     │   │   ├── CLEAN_EC_number_new_test.jsonl
     │   │   └── CLEAN_EC_number_price_test.jsonl
     │   └── train
-    │       ├── CLEAN_EC_number_split100_train.json
-    │       ├── CLEAN_EC_number_split10_train.json
-    │       ├── CLEAN_EC_number_split30_train.json
-    │       ├── CLEAN_EC_number_split50_train.json
-    │       └── CLEAN_EC_number_split70_train.json
+    │       ├── CLEAN_EC_number_train.json
     ├── Fold_type-Remote
     │   ├── test
     │   │   └── Remote_valid.jsonl
@@ -86,13 +82,11 @@ The **OPI dataset folder structure** is as follows:
             └── location_train.json
 ```
 
-The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all the 'train.json' files of the nine tasks into one single file, e.g., OPI_full.json, please do like this:
+The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all or several 'train.json' files of the nine tasks into one single file, please do like this:
 ```
 cd OPI_DATA
 python merge_nine_opi_tasks_train.py --output OPI_full.json
 ```
-
-Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protein instrucitons. You can also get the [`OPI_full.json`](https://drive.google.com/file/d/1FPg3VtU2nSVx1CnsjJyGCtspBV1ozyjx/view?usp=drive_link) from Google Drive.
 
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
@@ -145,10 +139,10 @@ Explanation of such bash arguments:
 
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
     --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
-    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_$4_train.json \
+    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_train.json \
     --bf16 True \
-    --output_dir path/to/output/llama_ft_CLEAN_EC_number_$4_$3_e$5 \
-    --num_train_epochs $5 \
+    --output_dir path/to/output/llama_ft_CLEAN_EC_number_$3_e$4 \
+    --num_train_epochs $4 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 16 \
@@ -165,7 +159,7 @@ OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_l
 
 To start, please do like this:
 ```
-bash train_llama/train_EC_number.sh 1 0 7b split70 3 
+bash train_llama/train_EC_number.sh 1 0 7b 3 
 ```
 
 Explanation of such bash arguments:
@@ -173,9 +167,7 @@ Explanation of such bash arguments:
 1: nnodes \
 0: node_rank \
 7b: model size of LLaMA \
-split70: split number of EC_number training set
 3: total training epochs
-Note: the argument 'split70' is only suitable to EC_number prdiction task, it is not necesseary for other tasks. 
 ```
 
 **Note**: As for the training, we take the suggestion to address out-of-memory issue from [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca), using DeepSpeed ZeRO stage-3 with offload.

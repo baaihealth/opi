@@ -95,9 +95,9 @@ if __name__ == '__main__':
         # './OPI_DATA/AP/Function/test/IDFilterSeq_function_valid.jsonl',
         './OPI_DATA/AP/Function/test/CASPSimilarSeq_function_valid.jsonl',
         
-        # './OPI_DATA/KM/gName2Tissue/test/tissue_valid_manner2.jsonl'
-        # './OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_new_test.jsonl'
-        # './OPI_DATA/KM/gID2Cancer/test/gene_ID_to_cancer_new_test.jsonl'
+        # './OPI_DATA/KM/gName2Tissue/test/gene_symbol_to_tissue_valid.jsonl'
+        # './OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl'
+        # './OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl'
     ]
     
     load_type = torch.float16
