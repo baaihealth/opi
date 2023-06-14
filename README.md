@@ -220,6 +220,7 @@ python eval_galai.py --model_idx EC_6.7b --gpus=0
 
 **For the original Galactica-6.7B model, please use the following script:**
 ```
+bash galactica_infer.sh
 ```
 
 ### 2. Evaluation of Alpaca
@@ -243,8 +244,6 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
 
-<video width="320" controls loop>
-  <source src="opi_demo.mp4" type="video/mp4">
-  <!-- <p>Your browser doesn't support HTML5 video. Here is
-     a <a href="opi_demo.mp4">link to the video</a> instead.</p> -->
-</video>
+<!-- <img alt="OPI Demo" src="opi_demo.gif" width="600" /> -->
+
+![OPI Demo](./opi_demo.gif)
