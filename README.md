@@ -201,7 +201,7 @@ In this repo, we release the OPI-Galactica-6.7B model for the task **Function Ke
 
 ## Evaluation tasks
 
-For benchamarking, we disign 3 types of evaluation tasks, each of which contain 3 specific ones, as shown in the following table.
+For benchamarking, we design 3 types of evaluation tasks, each of which contains 3 specific ones, as shown in the following table.
 
 | Task Type                     | Task Name                              |
 | ----------------------------- | -------------------------------------- |
@@ -234,7 +234,7 @@ bash galactica_infer.sh
 ```
 
 ### 2. Evaluation of Alpaca
-For comparison, we evaluate Alpaca-7B model and [Galpaca-6.7B](https://huggingface.co/GeorgiaTechResearchInstitute/galpaca-6.7b) model.
+For comparison, we evaluate Alpaca-7B model and [Galpaca-6.7B](https://huggingface.co/GeorgiaTechResearchInstitute/galpaca-6.7b) model. The Galpaca-6.7B model is contributed by Georgia Tech Research Institute on HuggingFace.
 
 As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/tatsu-lab/alpaca-7b-wdiff) from HuggingFace, which is the weight diff for [Stanford Alpaca-7B](https://github.com/tatsu-lab/stanford_alpaca/), then recover the original Alpaca-7B weights using the conversion script provided by [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca).
 
@@ -245,6 +245,8 @@ python eval_alpaca.py --model_idx alpaca-7b-recover --gpus=0 #original Alpaca-7B
 ```
 
 ### 3. Evaluation of LLaMA
+For comparison, we evaluate OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model.
+
 The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model, just by setting a different model_idx for a different model.
 ```
 cd eval_llama
