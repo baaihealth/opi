@@ -215,7 +215,7 @@ For benchamarking, we design 3 types of evaluation tasks, each of which contains
 | Knowledge Mining              |Cancer Prediction from Gene Symbol   |
 | Knowledge Mining              |Cancer Prediction from Gene Name     |
 
-## Evaluation with OPI-instruction-tuned models
+## Evaluatiing various models with OPI data
 For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
 
 ### 1. Evaluation of Galactica
