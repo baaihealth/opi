@@ -243,7 +243,8 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
 
-<!-- mp4格式 -->
-<video id="video" controls="" preload="none" poster="cover">
-      <source id="mp4" src="./opi_demo.mp4" type="video/mp4">
-</videos>
+<video width="320" controls loop>
+  <source src="opi_demo.mp4" type="video/mp4">
+  <!-- <p>Your browser doesn't support HTML5 video. Here is
+     a <a href="opi_demo.mp4">link to the video</a> instead.</p> -->
+</video>
