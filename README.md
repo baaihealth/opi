@@ -88,6 +88,7 @@ The **OPI dataset folder structure** is as follows:
 
 The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all the 'train.json' files of the nine tasks into one single file, e.g., OPI_full.json, please do like this:
 ```
+cd OPI_DATA
 python merge_nine_opi_tasks_train.py --output OPI_full.json
 ```
 
@@ -97,18 +98,18 @@ Once done, you will get **OPI_full.json**, which is composed of 1,615,661 protei
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
 For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
 
-### 1. Galactica fine-tuning with OPI
+### 1. Galactica instruction-tuning with OPI
 
-Training script:
+[Example: train_keywords.sh](./train_galai/train_keywords.sh)
 ```
 #!/bin/bash
 
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_galai/train.py \
-    --model_name_or_path /path/to/galactica-$3 \
-    --data_path  /path/to/CLEAN_EC_number_$4_train.json \
+    --model_name_or_path path/to/galactica_base_model/galactica-$3 \
+    --data_path  ./OPI_DATA/AP/Keywords/train/keywords_train.json \
     --bf16 True \
-    --output_dir /path/to/galai_ft_CLEAN_EC_number_$4_$3_e$5 \
-    --num_train_epochs $5 \
+    --output_dir path/to/output/galai_ft_opi/galai_ft_keywords_$3_e$4 \
+    --num_train_epochs $4 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 8 \
@@ -121,27 +122,24 @@ OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_g
     --warmup_ratio 0.03 \
     --deepspeed "./configs/default_offload_opt_param.json" \
     --tf32 True
-
 ```
 
-To start fine-tuning Galactica, please use the following script:
+To start, please do like this:
 ```
-bash train_galai/train_EC_number.sh 1 0 6.7b split70 3 
+bash train_galai/train_keywords.sh 1 0 6.7b 3 
 ```
 
-Explanation of such bash arguments: \
+Explanation of such bash arguments:
 ```
 1: nnodes \
 0: node_rank \
 6.7b: model size of Galactica \
-split70: split number of EC_number training set \
 3: total training epochs
-Note: the argument 'split70' is only suitable to EC_number prdiction task, it is not necesseary for other tasks. 
 ```
 
-### 2. LLaMA fine-tuning with OPI
+### 2. LLaMA instruction-tuning with OPI
 
-Training script:
+[Example: train_EC_number.sh](./train_llama/train_EC_number.sh)
 ```
 #!/bin/bash
 
@@ -165,12 +163,12 @@ OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_l
     --tf32 True
 ```
 
-To start fine-tuning LLaMA, please use the following script:
+To start, please do like this:
 ```
 bash train_llama/train_EC_number.sh 1 0 7b split70 3 
 ```
 
-Explanation of such bash arguments: \
+Explanation of such bash arguments:
 ```
 1: nnodes \
 0: node_rank \
@@ -180,21 +178,21 @@ split70: split number of EC_number training set
 Note: the argument 'split70' is only suitable to EC_number prdiction task, it is not necesseary for other tasks. 
 ```
 
-**Note**: As for the training, we take the suggestion to address out-of-memory issue from [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca), using DeepSpeed stage-3 with offload.
+**Note**: As for the training, we take the suggestion to address out-of-memory issue from [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca), using DeepSpeed ZeRO stage-3 with offload.
 
-### 3. Convert DeepSpeed-format weights to HuggingFace-format
-Once finished instruction tuning, we convert the DeepSpeed-format checkpoints to PyTorch-format, i.e., **pytorch_model.bin**, using the following script:
+### 3. Convert DeepSpeed-format weights
+Once finished instruction tuning, the DeepSpeed-format weights should be converted to **pytorch_model.bin**, using the following script:
 ```
-cd checkpoints_saved_folder
+cd output_dir
 python zero_to_fp32.py . pytorch_model.bin
 ```
 
 ### 4. Split pytorch_model.bin into chunks to speedup loading for inference
-After step 3, you will get the **pytorch_model.bin** file, you can split it to small chunks, e.g., pytorch_model-00001-of-00004.bin
-pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing. However, it is not a must thing, if you don't want.
+After step 3, you will get the **pytorch_model.bin** file. You can further split it to small chunks, e.g., pytorch_model-00001-of-00004.bin
+pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing. However, it is not a must, if you don't want. If you would like to split it, please do like this:
 ```
 cd model_split
-python model_split.py --model_idx EC_6.7b
+python model_split.py --model_idx OPI-instruction-tuned-model-name
 ```
 The you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
@@ -226,7 +224,7 @@ We evaluate OPI-instruction-tuned Galactica-6.7B model and origional Galactica-6
 **For OPI-instruction-tuned Galactica-6.7B model, please use the following script:**
 ```
 cd eval_galai
-python eval_galai.py --model_idx EC_6.7b --gpus=0
+python eval_galai.py --model_idx OPI-instruction-tuned-model-name --gpus=0
 ```
 
 **For the original Galactica-6.7B model, please use the following script:**
@@ -243,14 +241,14 @@ As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/ta
 The same script is used for evaluating Alpaca-7B and Galpaca-6.7B model, just by setting a different model_idx for a different model.
 ```
 cd eval_alpaca
-python eval_alpaca.py --model_idx alpaca-7b-recover --gpus=0
+python eval_alpaca.py --model_idx alpaca-7b-recover --gpus=0 #original Alpaca-7B weights
 ```
 
 ### 3. Evaluation of LLaMA
 The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model, just by setting a different model_idx for a different model.
 ```
 cd eval_llama
-python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B model
+python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weights
 ```
 
 ## Demo

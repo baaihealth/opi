@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_galai/train.py \
     --model_name_or_path path/to/galactica_base_model/galactica-$3 \
     --data_path  ./OPI_DATA/AP/Keywords/train/keywords_train.json \
