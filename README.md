@@ -52,17 +52,17 @@ The **OPI dataset folder structure** is as follows:
 │           ├── keywords_train.json
 │           └── keywords_train_0.01.json
 ├── KM
-│   ├── gID2Cancer
+│   ├── gSymbol2Cancer
 │   │   ├── test
-│   │   │   └── gene_ID_to_cancer_new_test.jsonl
+│   │   │   └── gene_symbol_to_cancer_new_test.jsonl
 │   │   └── train
-│   │       └── gene_ID_to_cancer_new_train.json
+│   │       └── gene_symbol_to_cancer_new_train.json
 │   ├── gName2Cancer
 │   │   ├── test
 │   │   │   └── gene_name_to_cancer_new_test.jsonl
 │   │   └── train
 │   │       └── gene_name_to_cancer_new_train.json
-│   └── gName2Tissue
+│   └── gSymbol2Tissue
 │       ├── test
 │       │   └── tissue_valid_manner2.jsonl
 │       └── train
