@@ -215,7 +215,7 @@ python model_split.py --model_idx OPI-instruction-tuned-model-name
 Then you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-In this repo, we release the OPI-Galactica-6.7B model for the task **Function Keywords Prediction**, which can be accessed from [Google Drive](https://drive.google.com/drive/folders/1Q0UtH0o5tKC1BDcvm0KXsCeZz3Ja-HQ6?usp=drive_link) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
+In this repo, we release the OPI-Galactica-6.7B model for the task **Function Keywords Prediction**, which can be accessed from [Google Drive](...) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
 
 ## Nine Evaluation tasks
 
