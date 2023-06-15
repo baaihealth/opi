@@ -5,7 +5,10 @@
 
 ## Overview
 This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a protein instruction dataset as well as propose to explore and benckmark LLMs for protein modeling in protein biology.
-![Overview](./Overview.png)
+<!-- ![Overview](./Overview.png) -->
+<div align="center">
+<img src=./Overview.png />
+</div>
 
 **Usage and License Notices:** [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
@@ -15,8 +18,10 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 ## OPI dataset construction pipeline
 The OPI dataset is curated on our own by extracting key informatoin from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplenmentary material of our manuscript which has been submitted to NeurIPS 2023 Datasets and Benchmarks. The following figure shows the general construction process as well as presents **a data example of OPI**.
 
-![OPI construction](./OPI_data.png)
-
+<!-- ![OPI construction](./OPI_data.png#pic_center) -->
+<div align="center">
+<img src=./OPI_data.png />
+</div>
 
 ## OPI dataset release
 **How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://drive.google.com/drive/folders/1l04jJSOb7BrlbtE9Sy9VzUHCQRtOBGiq?usp=drive_link) from Google Drive. 
