@@ -31,7 +31,7 @@ instruction:
 input:             
     MYLRKISAPLMTMLLLNGCAYIPHKPLVDGTTSAQPAPASAPLPNGSIFQTVQPMNYGYQPLFEDRRPRNIGDTLTITLQENVSASKSSSANASRNGTSSFGVTTAPRYLDGLLGNGRADMEITGDNTFGGKGGANANNTFSGTITVTVDQVLANGNLHVVGEKQIAINQGTEFIRFSGVVNPRTISGSNSVTSTQVADARIEYVGNGYINEAQTMGWLQRFFLNVSPY
 Output: 
-    Bacterial flagellum ; Cell outer membrane ; Lipoprotein ; Membrane ; Palmitate ; Reference proteome ; Signal
+    Bacterial flagellum; Cell outer membrane; Lipoprotein; Membrane; Palmitate; Reference proteome; Signal
 ```
 
 ## OPI dataset release
