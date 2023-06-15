@@ -20,7 +20,7 @@ The OPI dataset is curated on our own by extracting key informatoin from [Swiss-
 
 <!-- ![OPI construction](./OPI_data.png#pic_center) -->
 <div align="center">
-<img src=./OPI_data.png width=80%/>
+<img src=./OPI_data.png />
 </div>
 
 
@@ -80,7 +80,6 @@ The **OPI dataset folder structure** is as follows:
 └── SU
     ├── EC_number
     │   ├── test
-    │   │   ├── CLEAN_EC_number_halogenase_test.jsonl
     │   │   ├── CLEAN_EC_number_new_test.jsonl
     │   │   └── CLEAN_EC_number_price_test.jsonl
     │   └── train
