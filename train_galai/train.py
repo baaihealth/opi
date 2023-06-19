@@ -22,6 +22,8 @@ from typing import Dict, Optional, Sequence
 
 import torch, gc
 import transformers
+import sys
+sys.path.append("..") 
 import utils
 from torch.utils.data import Dataset
 from transformers import Trainer
