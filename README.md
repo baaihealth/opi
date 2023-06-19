@@ -20,7 +20,7 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 **Usage and License Notices:** [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
 ## Our vision and roadmap
-***Open Protein Instructions(OPI) is initial part of our Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI) and Open RNA Instructions(ORI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilite research in AI for Life Science community. We hope to reform the way the research is conducted in this community, by bridging LLMs and biology domain konwledge.***
+***Open Protein Instructions(OPI) is initial part of our Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI) and Open RNA Instructions(ORI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. We hope to reform the way the research is conducted in this community, by bridging LLMs and biology domain konwledge.***
 
 ## OPI dataset construction pipeline
 The OPI dataset is curated on our own by extracting key informatoin from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplenmentary material of our manuscript which has been submitted to NeurIPS 2023 Datasets and Benchmarks. The following figure shows the general construction process.
@@ -42,6 +42,8 @@ Output:
 ```
 
 ## OPI dataset release
+We release the first curated OPI dataset corresponding to the 9 evaluation tasks to facilitate further research in protein biology domain. We are warmly welcome further improvenmet or supplement to this dataset.
+
 **How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://drive.google.com/drive/folders/1l04jJSOb7BrlbtE9Sy9VzUHCQRtOBGiq?usp=drive_link) from Google Drive. 
 Once finished downloading the **OPI_DATA** from Google Drive, please put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** folder in this repo. 
 
@@ -113,7 +115,7 @@ The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merg
 cd OPI_DATA
 python merge_nine_opi_tasks_train.py --output OPI_merged.json
 ```
-
+You can access the whole dataset file [OPI_full_1.46M.json](https://drive.google.com/file/d/1lKh69Bxxu3cusm9oSpDr27bLr0HjXxRn/view?usp=drive_link) via Google Drive, which contain 1.46 million examples.
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
 For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
@@ -215,7 +217,7 @@ python model_split.py --model_idx OPI-instruction-tuned-model-name
 Then you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
 
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-In this repo, we release the OPI-Galactica-6.7B model for the task **Function Keywords Prediction**, which can be accessed from [Google Drive](...) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
+In this repo, we release the OPI-Galactica-6.7B model which is fine-funed on OPI full dataset, which can be accessed from [Google Drive](...) and [HuggingFace](...). Please feel free to contact us for other task-oriented models.
 
 ## Nine Evaluation tasks
 
@@ -270,6 +272,26 @@ The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and 
 cd eval_llama
 python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weights
 ```
+
+<!-- ### 4. The following table shows the evaluation results of OPI_full_Galactica-6.7b model on 9 tasks.
+| Task Type              | Task Name                             | Testing file | Acc | AUC | F1 | Rouge-L |
+| -----------------------| --------------------------------------|-----| --- |-----|----| ------- |
+| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_new_test     |  -  |  - |  - | -  |
+| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_price_test   |  -  |  - |  - | -  |
+| Sequence Understanding |Fold Type Prediction   | Remote_valid |  -  |  - |  - | -  |
+| Sequence Understanding |Subcellular Localization Prediction | location_valid |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Keywords Prediction | CASPSimilarSeq_keywords_valid |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Keywords Prediction | IDFilterSeq_keywords_valid    |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Keywords Prediction | UniProtSeq_keywords_valid     |  -  |  - |  - | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | CASPSimilarSeq_go_valid |  -  |  - |  - | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | IDFilterSeq_go_valid    |  -  |  - |  - | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | UniProtSeq_go_valid     |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Description Prediction | CASPSimilarSeq_function_valid |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Description Prediction | IDFilterSeq_function_valid    |  -  |  - |  - | -  |
+| Annotation Prediction  |Function Description Prediction | UniProtSeq_function_valid     |  -  |  - |  - | -  |
+| Knowledge Mining       |Tissue Location Prediction from Gene Symbol | gene_symbol_to_tissue_valid |  -  |  - |  - | -  |
+| Knowledge Mining       |Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test  |  -  |  - |  - | -  |
+| Knowledge Mining       |Cancer Prediction from Gene Name            | gene_name_to_cancer_test    |  -  |  - |  - | -  | -->
 
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
