@@ -273,25 +273,27 @@ cd eval_llama
 python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weights
 ```
 
-<!-- ### 4. The following table shows the evaluation results of OPI_full_Galactica-6.7b model on 9 tasks.
-| Task Type              | Task Name                             | Testing file | Acc | AUC | F1 | Rouge-L |
-| -----------------------| --------------------------------------|-----| --- |-----|----| ------- |
-| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_new_test     |  -  |  - |  - | -  |
-| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_price_test   |  -  |  - |  - | -  |
-| Sequence Understanding |Fold Type Prediction   | Remote_valid |  -  |  - |  - | -  |
-| Sequence Understanding |Subcellular Localization Prediction | location_valid |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Keywords Prediction | CASPSimilarSeq_keywords_valid |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Keywords Prediction | IDFilterSeq_keywords_valid    |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Keywords Prediction | UniProtSeq_keywords_valid     |  -  |  - |  - | -  |
-| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | CASPSimilarSeq_go_valid |  -  |  - |  - | -  |
-| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | IDFilterSeq_go_valid    |  -  |  - |  - | -  |
-| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | UniProtSeq_go_valid     |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Description Prediction | CASPSimilarSeq_function_valid |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Description Prediction | IDFilterSeq_function_valid    |  -  |  - |  - | -  |
-| Annotation Prediction  |Function Description Prediction | UniProtSeq_function_valid     |  -  |  - |  - | -  |
-| Knowledge Mining       |Tissue Location Prediction from Gene Symbol | gene_symbol_to_tissue_valid |  -  |  - |  - | -  |
-| Knowledge Mining       |Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test  |  -  |  - |  - | -  |
-| Knowledge Mining       |Cancer Prediction from Gene Name            | gene_name_to_cancer_test    |  -  |  - |  - | -  | -->
+### 4. The following table shows the evaluation results of OPI_full_Galactica-6.7b model on 9 tasks.
+| Task Type              | Task Name                             | Testing file | Accuracy | Precision | Recall | F1 | Rouge-L |
+| :---------------------:| :------------------------------------:|:---:| :-: |:---:|:--:|:--:| :-----: |
+| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_new_test   | - |  0.181  |  0.174 |  0.176 | -  |
+| Sequence Understanding |EC Number Prediction   | CLEAN_EC_number_price_test | - |  0.054 |  0.054 |  0.054 | -  |
+| Sequence Understanding |Subcellular Localization Prediction | location_valid |  0.678  |  -  |  - |  - | -  |
+| Sequence Understanding |Fold Type Prediction   | Remote_valid_fold |  0.068  |  -  |  - |  - | -  |
+| Sequence Understanding |Fold Type Prediction | Remote_valid_superfamily | 0.090 | - | - | - | - |
+| Sequence Understanding |Fold Type Prediction | Remote_valid_family | 0.416 | - | - | - | - |
+| Annotation Prediction  |Function Keywords Prediction | CASPSimilarSeq_keywords_valid |  -  |  0.716  | 0.669 | 0.674 | -  |
+| Annotation Prediction  |Function Keywords Prediction | IDFilterSeq_keywords_valid   |   -   |   0.822   | 0.771  | 0.778 | -  |
+| Annotation Prediction  |Function Keywords Prediction | UniProtSeq_keywords_valid     |   -   |   0.871   | 0.802  | 0.820 | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | CASPSimilarSeq_go_valid |  -  |  0.710  | 0.627  | 0.647 | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | IDFilterSeq_go_valid    |  -  |  0.724  | 0.637 | 0.656 | -  |
+| Annotation Prediction  |Gene Ontology(GO) Terms Prediction | UniProtSeq_go_valid     |  -  |  0.759  | 0.683 | 0.698 | -  |
+| Annotation Prediction  |Function Description Prediction | CASPSimilarSeq_function_valid |-|  -  |  - |  - | 0.431  |
+| Annotation Prediction  |Function Description Prediction | IDFilterSeq_function_valid    |-|  -  |  - |  - | 0.624  |
+| Annotation Prediction  |Function Description Prediction | UniProtSeq_function_valid     |-|  -  |  - |  - | 0.696  |
+| Knowledge Mining       |Tissue Location Prediction from Gene Symbol | gene_symbol_to_tissue_valid | - | 0.377  |  0.779 |  0.468 | -  |
+| Knowledge Mining       |Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test  | - | 0.554  |  0.433 |  0.465 | -  |
+| Knowledge Mining       |Cancer Prediction from Gene Name            | gene_name_to_cancer_test    | - | 0.507  |  0.400 |  0.429 | -  |
 
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
