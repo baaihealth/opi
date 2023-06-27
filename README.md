@@ -316,7 +316,7 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weight
 
 
 
-<table>
+<!-- <table>
     <tr>
         <td>Task111</td> 
         <td>Instruction</td> 
@@ -352,7 +352,7 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weight
         <td >行三列二</td>  
         <td >行三列二</td>  
     </tr>
-</table>
+</table> -->
 
 
 
