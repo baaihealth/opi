@@ -310,38 +310,30 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weight
 | Function Keywords Prediction  | What are the UniProtKB keywords for this specific protein sequence? | MRGSFFSRLPPQLSLLLLLLLLLSWRRVWTQEHIGTDPSKSPVAPVCPEACSCSPGGKANCSALALPAVPAGLSWQVRSLLLDRNR<br>VSTLPPGAFADAGALLYLVLRENRLRSVHARAFWGLGVLQRLDLSSNQLETLSPGTFTPLRALSFLSLAGNRLALLEPSILG<br>PLPLLRVLSLQDNSLSALEAGLLNSLPALDVLRLHGNPWACSCALRPLCTWLRKHPRPTSETETLLCVSPKLQTLNLLTDFP<br>DNAFKQCTQSLAARDLAVVYALGPASFLASLAICLALGSVLTACGARRRRRRTTVRHLIRRQPDPEGPASLEDVGSPTTTAIQA | Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport | Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport |
 | Gene Ontology(GO) Terms Prediction  | The Gene Ontology project (GO) provides a controlled vocabulary to describe gene and gene product attributes in any organism. There are 3 disjoint categories: cellular component, molecular function and biological process. Predict the GO term for a given protein sequence. | MEFVTNYTLEELKKRFTELGLEPYRAKQVFRWVYKKFVTDFEKMTDLGKKHRELLKEHFAFHPLEKLDRVEAPDAVKYLFKTKDGH<br>ILETVLIKERDHYTLCVSSQIGCAVGCTFCATALDGLKRNLSTAEIIDQYLQVQQDLGEEKIRNVVFMGMGEPLANYENVRK<br>AVEIMVSPEGLDLSKRRITISTSGIVAQIKRMAQDPVMKEVNLAVSLNAVSQKKREELMPLTKTNTLEELMEVLKNYPLPKY<br>RRITLEYVLIKGVNDSPNDAERLAKLIGRHKKKFKVNLIPFNPDPNLPYERPALTDIMKFQKVLWKYGISNFVRFSKGVEVF<br>GACGQLRTQRLQLQRV | cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation ; tRNA methylation | cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation |
 
-<!-- <table>
+<table>
     <tr>
-        <td>Task</td> 
-        <td>Ins</td> 
+        <td>Task111</td> 
+        <td>Instruction</td> 
         <td>Input</td> 
         <td>Target</td> 
-        <td>Prediction1</td> 
-        <td>Prediction1</td> 
-        <td>Prediction1</td> 
-        <td>Prediction1</td> 
+        <td>Prediction</td> 
    </tr>
     <tr>
-        <td rowspan="2">111</td>    
-        <td rowspan="2">111</td>    
-        <td rowspan="2">222</td>    
-        <td rowspan="2">333</td>    
-        <td >行二列二</td>  
-        <td >行二列二</td>  
-        <td >行二列二</td>  
-        <td >行二列二</td>  
+        <td >Gene Ontology(GO) Terms Prediction</td>  
+        <td >The Gene Ontology project (GO) provides a controlled vocabulary to describe gene and gene product attributes in any organism. There are 3 disjoint categories: cellular component, molecular function and biological process. Predict the GO term for a given protein sequence.</td>  
+        <td>MEFVTNYTLEELKKRFTELGLEPYRAKQVFRWVYKKFVTDFEKMTDLGKKHRELLKEHFAFHPLEKLDRVEAPD<br>AVKYLFKTKDGHILETVLIKERDHYTLCVSSQIGCAVGCTFCATALDGLKRNLSTAEIIDQYLQVQQDLGEEKI<br>RNVVFMGMGEPLANYENVRKAVEIMVSPEGLDLSKRRITISTSGIVAQIKRMAQDPVMKEVNLAVSLNAVSQKK<br>REELMPLTKTNTLEELMEVLKNYPLPKYRRITLEYVLIKGVNDSPNDAERLAKLIGRHKKKFKVNLIPFNPDPN<br>LPYERPALTDIMKFQKVLWKYGISNFVRFSKGVEVFGACGQLRTQRLQLQRV</td>  
+        <td >cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation ; tRNA methylation</td>  
+        <td >cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation</td>  
     </tr>
     <tr> 
+        <td >行三列二</td>  
         <td >行三列二</td>  
         <td >行三列二</td>  
         <td >行三列二</td>  
         <td >行三列二</td>  
     </tr>
     <tr>
-        <td rowspan="2">111</td>    
-        <td rowspan="2">111</td>    
-        <td rowspan="2">222</td>    
-        <td rowspan="2">333</td>    
+        <td >行二列二</td>  
         <td >行二列二</td>  
         <td >行二列二</td>  
         <td >行二列二</td>  
@@ -352,24 +344,9 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weight
         <td >行三列二</td>  
         <td >行三列二</td>  
         <td >行三列二</td>  
-    </tr>
-    <tr>
-        <td rowspan="2">111</td>    
-        <td rowspan="2">111</td>    
-        <td rowspan="2">222</td>    
-        <td rowspan="2">333</td>    
-        <td >行二列二</td>  
-        <td >行二列二</td>  
-        <td >行二列二</td>  
-        <td >行二列二</td>  
-    </tr>
-    <tr> 
-        <td >行三列二</td>  
-        <td >行三列二</td>  
-        <td >行三列二</td>  
         <td >行三列二</td>  
     </tr>
-</table> -->
+</table>
 
 
 
