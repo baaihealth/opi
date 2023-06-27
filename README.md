@@ -31,14 +31,19 @@ The OPI dataset is curated on our own by extracting key informatoin from [Swiss-
 </div>
 
 
-- **A data example of OPI:**
+- **An example of OPI taining data:**
 ```
 instruction: 
-    Can you generate the UniProtKB keywords for the given protein sequence?
-input:             
-    MYLRKISAPLMTMLLLNGCAYIPHKPLVDGTTSAQPAPASAPLPNGSIFQTVQPMNYGYQPLFEDRRPRNIGDTLTITLQENVSASKSSSANASRNGTSSFGVTTAPRYLDGLLGNGRADMEITGDNTFGGKGGANANNTFSGTITVTVDQVLANGNLHVVGEKQIAINQGTEFIRFSGVVNPRTISGSNSVTSTQVADARIEYVGNGYINEAQTMGWLQRFFLNVSPY
-Output: 
-    Bacterial flagellum; Cell outer membrane; Lipoprotein; Membrane; Palmitate; Reference proteome; Signal
+    What is the EC classification of the input protein sequence based on its biological function?
+input:                         
+    MGLVSSKKPDKEKPIKEKDKGQWSPLKVSAQDKDAPPLPPLVVFNHLTPPPPDEHLDEDKHFVVALYDYTAMNDRDLQMLKGEKLQVLKGTGDWWLARS
+    LVTGREGYVPSNFVARVESLEMERWFFRSQGRKEAERQLLAPINKAGSFLIRESETNKGAFSLSVKDVTTQGELIKHYKIRCLDEGGYYISPRITFPSL
+    QALVQHYSKKGDGLCQRLTLPCVRPAPQNPWAQDEWEIPRQSLRLVRKLGSGQFGEVWMGYYKNNMKVAIKTLKEGTMSPEAFLGEANVMKALQHERLV
+    RLYAVVTKEPIYIVTEYMARGCLLDFLKTDEGSRLSLPRLIDMSAQIAEGMAYIERMNSIHRDLRAANILVSEALCCKIADFGLARIIDSEYTAQEGAK
+    FPIKWTAPEAIHFGVFTIKADVWSFGVLLMEVVTYGRVPYPGMSNPEVIRNLERGYRMPRPDTCPPELYRGVIAECWRSRPEERPTFEFLQSVLEDFYT
+    ATERQYELQP
+output: 
+    2.7.10.2
 ```
 
 ## OPI dataset release
@@ -295,7 +300,76 @@ python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weight
 | Knowledge Mining       |Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test  | - | 0.554  |  0.433 |  0.465 | -  |
 | Knowledge Mining       |Cancer Prediction from Gene Name            | gene_name_to_cancer_test    | - | 0.507  |  0.400 |  0.429 | -  |
 
+## Prediction results comparison
+
+|Task|Ins|Input|Target|OPI_full_Galactica-6.7b Prediction|
+|:---:|:---:|:---:|:---:|:----:|
+| EC Number Prediction  | What is the EC number of the input sequence? | MSLLAYTNLLLQNGRIFRYYKKANIKKFIKKIIKLDLKSTPSEASVSRQTFLSTGLNSVKNAVQLQARKLLINNVLERVTPTLNSDLKKKAAKRLFYGDSAPFFALVGVSLASGSGLLTKDDELEGICWEIREAVSKGKWNDSESENVEQLQAANLDELDLGEPIAKGCNAVVYSAKLKNVQSNKLAHQLAVKMMFNYDVESNSTAILKAMYRETVPAMSYFFNQNLFNIENISDFKIRLPPHPNIVRMYSVFADRIPDLQCNKQLYPEALPPRINPEGSGRNMSLFLVMKRYDCTLKEYLRDKTPNMRSSILLLSQLLEAVAHMNIHNISHRDLKSDNILVDLSEGDAYPTIVITDFGCCLCDKQNGLVIPYRSEDQDKGGNRALMAPEIANAKPGTFSWLNYKKSDLWAVGAIAYEIFNIDNPFYDKTMKLLSKSYKEEDLPELPDTIPFIIRNLVSNMLSRSTNKRLDCDVAATVAQLYLWAPSSWLKENYTLPNSNEIIQWLLCLSSKVLCERDITARNKTNTMSESVSKAQYKGRRSLPEYELIASFLRRVRLHLVRKGLKWIQELHIYN | 2.7.11.1 | 2.7.11.1 |
+
+<!-- <table>
+    <tr>
+        <td>Task</td> 
+        <td>Ins</td> 
+        <td>Input</td> 
+        <td>Target</td> 
+        <td>Prediction1</td> 
+        <td>Prediction1</td> 
+        <td>Prediction1</td> 
+        <td>Prediction1</td> 
+   </tr>
+    <tr>
+        <td rowspan="2">111</td>    
+        <td rowspan="2">111</td>    
+        <td rowspan="2">222</td>    
+        <td rowspan="2">333</td>    
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+    </tr>
+    <tr> 
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+    </tr>
+    <tr>
+        <td rowspan="2">111</td>    
+        <td rowspan="2">111</td>    
+        <td rowspan="2">222</td>    
+        <td rowspan="2">333</td>    
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+    </tr>
+    <tr> 
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+    </tr>
+    <tr>
+        <td rowspan="2">111</td>    
+        <td rowspan="2">111</td>    
+        <td rowspan="2">222</td>    
+        <td rowspan="2">333</td>    
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+        <td >行二列二</td>  
+    </tr>
+    <tr> 
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+        <td >行三列二</td>  
+    </tr>
+</table> -->
+
+
+
 ## Demo
-We use the [FastChat](https://github.com/lm-sys/FastChat) platform for our demo.
+We use the [FastChat](https://github.com/lm-sys/FastChat) platform to demonstrate the ability of OPI_full_Galactica-6.7b model on various evaluation tasks.
 
 ![OPI Demo](./opi_demo.gif)
