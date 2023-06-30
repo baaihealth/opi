@@ -151,7 +151,9 @@ OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_g
     --tf32 True
 ```
 
-To start, please do like this:
+In the Shell above, you can setup your onw local LLM weights path or Huggingface model entry (e.g., *facebook/galactica-6.7b*) to ```model_name_or_path```  and you onw training results saving path to ```output_dir```.
+
+To start training, please do like this:
 ```
 bash train_galai/train_keywords.sh 1 0 6.7b 3 
 ```
@@ -189,8 +191,8 @@ OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_l
     --deepspeed "./configs/default_offload_opt_param.json" \
     --tf32 True
 ```
-
-To start, please do like this:
+In the Shell above, you can setup your onw local LLM weights path or Huggingface model entry (e.g., *decapoda-research/llama-7b-hf*) to ```model_name_or_path```  and you onw training results saving path to ```output_dir```.
+To start training, please do like this:
 ```
 bash train_llama/train_EC_number.sh 1 0 7b 3 
 ```
@@ -241,16 +243,22 @@ For benchamarking, we design 3 types of evaluation tasks, each of which contains
 |    Knowledge Mining    |      KM      |      Cancer Prediction from Gene Name       |
 
 ## Evaluating various models with OPI data
-For the evaluation script, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
+### 1. Environment setup
+```
+pip install -r requirements.txt
+```
 
-### 1. Evaluation of Galactica
+As for the evaluation, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
+
+### 2. Evaluation of Galactica
 We evaluate OPI-instruction-tuned Galactica-6.7B model and origional Galactica-6.7B model.
 
 **For OPI-instruction-tuned Galactica-6.7B model, please use the following script:**
 ```
 cd eval_galai
-python eval_galai.py --model_idx OPI-instruction-tuned-model-name --gpus=0
+python eval_galai.py --model_idx OPI-instruction-tuned-model-name --output_dir ./eval_galai_output --gpus=0
 ```
+In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_galai.py](eval_galai/eval_galai.py#L74). ```output_dir```is where you save the evaluation results. 
 
 **For the original Galactica-6.7B model, please use the following script:**
 ```
@@ -258,7 +266,7 @@ cd eval_galai/infer_with_original_galai
 bash galactica_infer.sh
 ```
 
-### 2. Evaluation of Alpaca
+### 3. Evaluation of Alpaca
 For comparison, we evaluate Alpaca-7B model and [Galpaca-6.7B](https://huggingface.co/GeorgiaTechResearchInstitute/galpaca-6.7b) model. The Galpaca-6.7B model is contributed by Georgia Tech Research Institute on HuggingFace.
 
 As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/tatsu-lab/alpaca-7b-wdiff) from HuggingFace, which is the weight diff for [Stanford Alpaca-7B](https://github.com/tatsu-lab/stanford_alpaca/), then recover the original Alpaca-7B weights using the conversion script provided by [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca).
@@ -266,19 +274,21 @@ As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/ta
 The same script is used for evaluating Alpaca-7B and Galpaca-6.7B model, just by setting a different model_idx for a different model.
 ```
 cd eval_alpaca
-python eval_alpaca.py --model_idx alpaca-7b-recover --gpus=0 #original Alpaca-7B weights
+python eval_alpaca.py --model_idx alpaca-7b-recover --output_dir ./eval_alpaca_output --gpus=0 #original Alpaca-7B weights
 ```
+In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_alpaca.py](eval_alpaca/eval_alpaca.py#L81). ```output_dir```is where you save the evaluation results. 
 
-### 3. Evaluation of LLaMA
+### 4. Evaluation of LLaMA
 For comparison, we evaluate OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model.
 
 The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model, just by setting a different model_idx for a different model.
 ```
 cd eval_llama
-python eval_llama.py --model_idx llama_7b_hf --gpus=0  #original LLaMA-7B weights
+python eval_llama.py --model_idx llama_7b_hf --output_dir ./eval_llama_output --gpus=0  #original LLaMA-7B weights
 ```
+In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_llama.py](eval_llama/eval_llama.py#L83). ```output_dir```is where you save the evaluation results. 
 
-### 4. The following table shows evaluation results of OPI_full_Galactica-6.7B model on 9 tasks.
+### 5. The following table shows evaluation results of OPI_full_Galactica-6.7B model on 9 tasks.
 | Task Type              | Task Name                                   | Testing file                  | Accuracy | Precision | Recall |  F1   | Rouge-L |
 | ---------------------- | ------------------------------------------- | ----------------------------- | :------: | :-------: | :----: | :---: | :-----: |
 | Sequence Understanding | EC Number Prediction                        | CLEAN_EC_number_new_test      |    -     |   0.181   | 0.174  | 0.176 |    -    |

@@ -22,6 +22,7 @@ parser.add_argument('--model_idx', default=None, type=str)
 parser.add_argument('--lora_model', default=None, type=str,help="If None, perform inference on the base model")
 parser.add_argument('--tokenizer_path',default=None,type=str)
 parser.add_argument('--data_file',default=None, type=str,help="A file that contains instructions (one instruction per line)")
+parser.add_argument('--output_dir', default="./eval_llama_output", type=str)
 parser.add_argument('--predictions_file', default=None, type=str)
 parser.add_argument('--gpus', default="0", type=str)
 parser.add_argument('--only_cpu',action='store_true',help='only use CPU for inference')
@@ -31,7 +32,7 @@ if args.only_cpu is True:
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 import torch
 from transformers import LlamaForCausalLM, LlamaTokenizer, GenerationConfig
-from peft import  PeftModel
+# from peft import  PeftModel
 import tqdm
 import re
 import sys
@@ -84,28 +85,27 @@ model_dict={
         }
 
 if __name__ == '__main__':
-    output_dir="./eval_llama_output"
-    os.makedirs(output_dir, exist_ok=True)  
+    os.makedirs(args.output_dir, exist_ok=True)  
     test_files=[
-        # "./OPI_DATA/SU/EC_number/test/CLEAN_EC_number_halogenase_test.jsonl",
-        # "./OPI_DATA/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl",
-        # "./OPI_DATA/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl",
-        # "./OPI_DATA/SU/Subcellular_location/test/location_valid.jsonl",
-        # "./OPI_DATA/SU/Fold_type-Remote/test/Remote_valid.jsonl",
+        # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_halogenase_test.jsonl",
+        # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl",
+        # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl",
+        # "../OPI_DATA/SU/Subcellular_location/test/location_valid.jsonl",
+        # "../OPI_DATA/SU/Fold_type-Remote/test/Remote_valid.jsonl",
         
-        # './OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_valid.jsonl',
-        # './OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_valid.jsonl',
-        # './OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_valid.jsonl',
-        # './OPI_DATA/AP/GO/test/UniProtSeq_go_valid.jsonl',
-        # './OPI_DATA/AP/GO/test/IDFilterSeq_go_valid.jsonl',
-        # './OPI_DATA/AP/GO/test/CASPSimilarSeq_go_valid.jsonl',
-        # './OPI_DATA/AP/Function/test/UniProtSeq_function_valid.jsonl',
-        # './OPI_DATA/AP/Function/test/IDFilterSeq_function_valid.jsonl',
-        './OPI_DATA/AP/Function/test/CASPSimilarSeq_function_valid.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_valid.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_valid.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_valid.jsonl',
+        # '../OPI_DATA/AP/GO/test/UniProtSeq_go_valid.jsonl',
+        # '../OPI_DATA/AP/GO/test/IDFilterSeq_go_valid.jsonl',
+        # '../OPI_DATA/AP/GO/test/CASPSimilarSeq_go_valid.jsonl',
+        # '../OPI_DATA/AP/Function/test/UniProtSeq_function_valid.jsonl',
+        # '../OPI_DATA/AP/Function/test/IDFilterSeq_function_valid.jsonl',
+        '../OPI_DATA/AP/Function/test/CASPSimilarSeq_function_valid.jsonl',
         
-        # './OPI_DATA/KM/gName2Tissue/test/gene_symbol_to_tissue_valid.jsonl'
-        # './OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl'
-        # './OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl'
+        # '../OPI_DATA/KM/gName2Tissue/test/gene_symbol_to_tissue_valid.jsonl'
+        # '../OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl'
+        # '../OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl'
     ]
     load_type = torch.float16
     if torch.cuda.is_available():
@@ -136,9 +136,9 @@ if __name__ == '__main__':
         assert tokenzier_vocab_size > model_vocab_size
         print("Resize model embeddings to fit tokenizer")
         base_model.resize_token_embeddings(tokenzier_vocab_size)
-    if args.lora_model is not None:
-        print("loading peft model")
-        model = PeftModel.from_pretrained(base_model, args.lora_model,torch_dtype=load_type,device_map='auto',)
+    # if args.lora_model is not None:
+    #     print("loading peft model")
+    #     model = PeftModel.from_pretrained(base_model, args.lora_model,torch_dtype=load_type,device_map='auto',)
     else:
         model = base_model
 
@@ -152,7 +152,7 @@ if __name__ == '__main__':
             examples = sample_data
         else:
             test_file_name= os.path.splitext(os.path.basename(args.data_file))[0]
-            args.predictions_file = os.path.join(output_dir, f"{test_file_name}_{args.model_idx}_{temperature}_{top_p}_{num_beams}.json")
+            args.predictions_file = os.path.join(args.output_dir, f"{test_file_name}_{args.model_idx}_{temperature}_{top_p}_{num_beams}.json")
             eval_tasks = [json.loads(l) for l in open(args.data_file, "r")]
             examples = [
                 {"instruction": t["instruction"], "input": t["instances"][0]["input"], "output": t["instances"][0]["output"]}

@@ -7,3 +7,9 @@ torch
 sentencepiece
 tokenizers>=0.13.3
 wandb
+datasets
+gradio
+accelerate
+deepspeed==0.9.1
+fire
+tqdm
