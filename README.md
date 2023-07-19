@@ -120,7 +120,7 @@ The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merg
 cd OPI_DATA
 python merge_nine_opi_tasks_train.py --output OPI_merged.json
 ```
-You can access the whole dataset file [OPI_full_1.46M.json](https://drive.google.com/file/d/1lKh69Bxxu3cusm9oSpDr27bLr0HjXxRn/view?usp=drive_link) via Google Drive, which contains 1.46 million examples.
+You can access the whole dataset file [OPI_full_1.46M.json](https://huggingface.co/datasets/BAAI/OPI) from HuggingFace, which contains 1.46 million examples.
 
 ## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
 For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
