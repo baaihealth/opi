@@ -82,20 +82,20 @@ if __name__ == '__main__':
         # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_halogenase_test.jsonl",
         # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl",
         # "../OPI_DATA/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl",
-        # "../OPI_DATA/SU/Subcellular_location/test/location_valid.jsonl",
-        # "../OPI_DATA/SU/Fold_type-Remote/test/Remote_valid.jsonl",
+        # "../OPI_DATA/SU/Subcellular_location/test/location_test.jsonl",
+        # "../OPI_DATA/SU/Fold_type-Remote/test/Remote_test.jsonl",
         
-        # '../OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_valid.jsonl',
-        # '../OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_valid.jsonl',
-        # '../OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_valid.jsonl',
-        # '../OPI_DATA/AP/GO/test/UniProtSeq_go_valid.jsonl',
-        # '../OPI_DATA/AP/GO/test/IDFilterSeq_go_valid.jsonl',
-        # '../OPI_DATA/AP/GO/test/CASPSimilarSeq_go_valid.jsonl',
-        # '../OPI_DATA/AP/Function/test/UniProtSeq_function_valid.jsonl',
-        # '../OPI_DATA/AP/Function/test/IDFilterSeq_function_valid.jsonl',
-        '../OPI_DATA/AP/Function/test/CASPSimilarSeq_function_valid.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_test.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_test.jsonl',
+        # '../OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_test.jsonl',
+        # '../OPI_DATA/AP/GO/test/UniProtSeq_go_test.jsonl',
+        # '../OPI_DATA/AP/GO/test/IDFilterSeq_go_test.jsonl',
+        # '../OPI_DATA/AP/GO/test/CASPSimilarSeq_go_test.jsonl',
+        # '../OPI_DATA/AP/Function/test/UniProtSeq_function_test.jsonl',
+        # '../OPI_DATA/AP/Function/test/IDFilterSeq_function_test.jsonl',
+        '../OPI_DATA/AP/Function/test/CASPSimilarSeq_function_test.jsonl',
         
-        # '../OPI_DATA/KM/gName2Tissue/test/gene_symbol_to_tissue_valid.jsonl'
+        # '../OPI_DATA/KM/gName2Tissue/test/gene_symbol_to_tissue_test.jsonl'
         # '../OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl'
         # '../OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl'
     ]

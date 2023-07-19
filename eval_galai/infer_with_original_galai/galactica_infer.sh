@@ -1,14 +1,14 @@
 #Function Keywords Prediction of original galactica model
-python galactica_infer.py --input CASPSimilarSeq_valid.json --output infer_result.json --task keyword
+python galactica_infer.py --input CASPSimilarSeq_test.json --output infer_result.json --task keyword
 
 #GO Terms Prediction of original galactica model
-python galactica_infer.py --input CASPSimilarSeq_valid.json --output infer_result.json --task GO
+python galactica_infer.py --input CASPSimilarSeq_test.json --output infer_result.json --task GO
 
 #Function Description Prediction of original galactica model
-python galactica_infer.py --input CASPSimilarSeq_valid.json --output infer_result.json --task function_description
+python galactica_infer.py --input CASPSimilarSeq_test.json --output infer_result.json --task function_description
 
 #EC Number Prediction of original galactica model
-python galactica_infer.py --input EC_valid.json --output infer_result.json --task EC
+python galactica_infer.py --input EC_test.json --output infer_result.json --task EC
 
 #Tissue Location Prediction from Gene Symbol of original galactica model
 python galactica_infer.py --input input.json --output infer_result.json --task tissue
