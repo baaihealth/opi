@@ -226,9 +226,9 @@ Then you will get a checkpoint folder suffixed with "**chunked**", which you can
 ### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
 In this repo, we release the OPI_full_Galactica-6.7B model which is fine-funed on OPI full dataset, which can be accessed from [HuggingFace](...). Please feel free to contact us if there is any question.
 
-## Nine Evaluation tasks
+## OPEval: Nine Evaluation tasks
 
-For benchamarking, we design 3 types of evaluation tasks, each of which contains 3 specific ones, as shown in the following table.
+For benchamarking, we design OPEval consisting of 3 types of evaluation tasks, each of which contains 3 specific ones, as shown in the following table.
 
 |       Task Type        | Abbreviation |                  Task Name                  |
 | :--------------------: | :----------: | :-----------------------------------------: |
