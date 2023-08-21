@@ -310,7 +310,7 @@ In the commands above, ```model_idx```is the model index you can allocate to you
 | Knowledge Mining       | Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test    |    -     |   0.554   | 0.433  | 0.465 |    -    |
 | Knowledge Mining       | Cancer Prediction from Gene Name            | gene_name_to_cancer_test      |    -     |   0.507   | 0.400  | 0.429 |    -    |
 
-## Prediction (by OPI_full_Galactica-6.7B) v.s. Target
+## Prediction by OPI_full_Galactica-6.7B v.s. Prediction by GPT-4 v.s. Target
 
 <details>
 <summary>EC Number Prediction</summary>
@@ -324,6 +324,8 @@ Prediction:
     2.7.11.1
 Target:
     2.7.11.1
+GPT-4's result (version: 2023-06-01-preview):
+    The provided sequence is a protein sequence, and EC numbers are usually assigned to enzymes based on the specific chemical reactions they catalyze. Since the provided sequence doesn't indicate a specific enzymatic function, it's not possible to provide an EC number for this sequence. An EC number can typically be found through annotation databases like UniProt or NCBI based on experimental data or sequence similarity to known enzymes. It would require a thorough bioinformatics analysis and comparison with known enzyme sequences. Furthermore, the annotation and the eventual EC number would reflect a prediction and not a guaranteed enzymatic function.
 ```
 
 </details>
@@ -340,6 +342,8 @@ Prediction:
     3
 Target:
     3
+GPT-4's result (version: 2023-06-01-preview):
+    I'm sorry for the confusion, but as an AI text model developed by OpenAI, I don't have the capability to directly analyze protein sequences and predict their folding types. Understanding protein folding typically requires complex algorithms and/or deep learning models specifically trained on this task. If you have a specific database or system you are using that has numbered protein folding types, I would recommend utilizing their tools or contacting them for assistance.
 ```
 
 </details>
@@ -356,6 +360,8 @@ Prediction:
     membrane
 Target:
     membrane
+GPT-4's result (version: 2023-06-01-preview):
+    Predicting the intracellular localization of a protein based on its amino acid sequence and motifs can be analyzed through bioinformatic tools like PSORT, TargetP, and SignalP. As an AI text based assistant, I don't have access to bioinformatics tools to analyze the specific sequence provided. However, these tools can help you predict the location based on features such as signal peptides, nuclear localization signals, or motifs like transmembrane regions that could hint to membrane localization.\n\nFor future reference, here are some general rules:\n1. A significant number of positively charged amino acids at the N-terminal often indicates targeting to mitochondria.\n2. If there is a continuous sequence of about 15-60 hydrophobic amino acids, it typically indicates a transmembrane domain, and such proteins are usually located in various membranes.\n3. The presence of RR or K(K/R)X(K/R) motifs might indicate nuclear localization.\n4. Proteins containing SKL or similar C-terminal motifs are typically peroxisomal.\n5. Proteins with motifs like FYRALM, FF, FXXXFXXXY and FXXXXWIXXXXF often indicate Golgi localization.\n6. Aiming for ER? Check for KDEL or DDEL C-terminal motifs.\nAgain, this sequence should be analyzed using appropriate software tools to confirm its location.
 ```
 
 </details>
@@ -372,6 +378,8 @@ Prediction:
     Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport
 Target:
     Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport
+GPT-4's result (version: 2023-06-01-preview):
+    To get UniprotKB keywords for a specific protein sequence, you would have to conduct a Protein BLAST search against the UniprotKB database using the provided protein sequence. This will allow you to identify known proteins with similar sequences, and their associated UniprotKB keywords.\n\nUnfortunately, I can't perform such a database search for you, as I'm an AI powered assistant and such tasks are currently outside my capabilities. You can perform protein sequence analysis using bioinformatics tools such as NCBI's online BLAST tool or the Swiss Institute of Bioinformatics' tool called BLAST+.\n\nRemember, proper data interpretation also requires professional training in bioinformatics or a related field, so if you aren't specialized in these, it would be suggested to collaborate with someone who is.
 ```
 
 </details>
@@ -388,6 +396,9 @@ Prediction:
     cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation 
 Target:
     cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation ; tRNA methylation
+GPT-4's result (version: 2023-06-01-preview):
+    As an AI text-based model, I can't directly predict the Gene Ontology (GO) term for a given protein sequence as it requires complex bioinformatics analyses or experimental data. This type of prediction typically involves utilizing databases, algorithms, or machine learning models specifically designed for protein sequence analysis. Tools like BLAST (Basic Local Alignment Search Tool), InterPro, or specialized programs for GO term prediction such as Blast2GO can be used. It's best to consult with a bioinformatics specialist or use an appropriate computational tool for this task.
+    
 ```
 
 </details>
@@ -404,6 +415,8 @@ Prediction:
     Removes the N-terminal methionine from nascent proteins. The N-terminal methionine is often cleaved when the second residue in the primary sequence is small and uncharged (Met-Ala-, Cys, Gly, Pro, Ser, Thr, or Val). Requires deformylation of the N(alpha)-formylated initiator methionine before it can be hydrolyzed.
 Target:
     Removes the N-terminal methionine from nascent proteins. The N-terminal methionine is often cleaved when the second residue in the primary sequence is small and uncharged (Met-Ala-, Cys, Gly, Pro, Ser, Thr, or Val). Requires deformylation of the N(alpha)-formylated initiator methionine before it can be hydrolyzed (By similarity). May play a role in colon tumorigenesis.
+GPT-4's result (version: 2023-06-01-preview):
+    This protein sequence appears to be from a large and complex protein that may play different roles depending on the type of cell in which it is expressed. A few notable features can be identified:\n\n1. A variety of highly conserved motifs such as GSHRIFSSPL which could suggest a particular functional role. \n\n2. Several occurrences of the amino acids Histidine (H) and Arginine (R) which are known to be involved in binding to DNA or RNA.\n\n3. Amino acid pattern suggest presence of potential enzymatic activity e.g. Serine (S), Aspartate(D) and Glycine(G). \n\n4. A potential signal peptide at the N-terminal of the protein (MAAPSGVHLL) which might suggest that this protein could be secreted or localized to a specific cellular compartment. \n\n5. There are numerous occurrences of the residues Cysteine (C), which could form disulfide bonds, important for the protein's 3-dimensional structure.\n\nOverall, the exact function of this protein is still not entirely clear based on the sequence alone. However, the sequence points to roles in possibly enzymatic activity, reparative action, signal transduction, protein synthesis, protein folding and stabilization. The protein may also be involved in binding to DNA or RNA. Further experimental analysis and annotation are required to confirm these predictions and to gain a more complete understanding of this protein's role in the cell.
 ```
 
 </details>
@@ -420,6 +433,8 @@ Prediction:
     adrenal gland, appendix, bone marrow, breast, bronchus, caudate, cerebellum, cerebral cortex, cervix, colon, duodenum, endometrium, epididymis, esophagus, fallopian tube, gallbladder, heart muscle, hippocampus, kidney, liver, lung, lymph node, nasopharynx, oral mucosa, ovary, pancreas, parathyroid gland, placenta, prostate, rectum, salivary gland, seminal vesicle, skeletal muscle, skin, small intestine, smooth muscle, soft tissue, spleen, stomach, testis, thyroid gland, tonsil, urinary bladder
 Target:
     adrenal gland, appendix, breast, bronchus, cerebral cortex, colon, fallopian tube, gallbladder, kidney, nasopharynx, prostate, rectum, salivary gland, seminal vesicle, skeletal muscle, small intestine, stomach, urinary bladder
+GPT-4's result (version: 2023-06-01-preview):
+    I'm sorry, as an AI, I don't currently have the capability to access real-time data or perform biological simulations. I recommend using bioinformatics databases such as UniProt, NCBI Gene, or the Human Protein Atlas for such queries. You should be able to find up-to-date and comprehensive information about the gene TMEM198, including its tissue expression pattern.
 ```
 
 </details>
@@ -436,6 +451,8 @@ Prediction:
     granulosa-cell tumour of the ovary
 Target:
     granulosa-cell tumour of the ovary
+GPT-4's result (version: 2023-06-01-preview):
+    The gene symbol FOXL2 has been primarily associated with Ovarian Granulosa Cell Tumor. It is also related to conditions like Blepharophimosis Syndrome. However, it should be noted that genetic variance can have multifactorial implications, and presence or mutation of this gene does not necessarily signify a confirm diagnosis of the diseases. Medical consultation should be sought for an accurate diagnosis.
 ```
 
 </details>
@@ -452,6 +469,8 @@ Prediction:
     Burkitt lymphoma
 Target:
     Burkitt lymphoma
+GPT-4's result (version: 2023-06-01-preview):
+    The gene \"Immunoglobulin Lambda Locus\" is associated with several types of leukemia and lymphoma, including Chronic Lymphocytic Leukemia and Non-Hodgkin Lymphoma.
 ```
 
 </details>
