@@ -310,7 +310,7 @@ In the commands above, ```model_idx```is the model index you can allocate to you
 | Knowledge Mining       | Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test    |    -     |   0.554   | 0.433  | 0.465 |    -    |
 | Knowledge Mining       | Cancer Prediction from Gene Name            | gene_name_to_cancer_test      |    -     |   0.507   | 0.400  | 0.429 |    -    |
 
-## Prediction by OPI_full_Galactica-6.7B v.s. Prediction by GPT-4 v.s. Target
+## Prediction by OPI_full_Galactica-6.7B/GPT-4/GPT-4-32k/GPT-3.5/Claude v.s. Target
 
 <details>
 <summary>EC Number Prediction</summary>
@@ -320,12 +320,19 @@ Instruction:
     What is the EC number of the input sequence?
 Input:
     MSLLAYTNLLLQNGRIFRYYKKANIKKFIKKIIKLDLKSTPSEASVSRQTFLSTGLNSVKNAVQLQARKLLINNVLERVTPTLNSDLKKKAAKRLFYGDSAPFFALVGVSLASGSGLLTKDDELEGICWEIREAVSKGKWNDSESENVEQLQAANLDELDLGEPIAKGCNAVVYSAKLKNVQSNKLAHQLAVKMMFNYDVESNSTAILKAMYRETVPAMSYFFNQNLFNIENISDFKIRLPPHPNIVRMYSVFADRIPDLQCNKQLYPEALPPRINPEGSGRNMSLFLVMKRYDCTLKEYLRDKTPNMRSSILLLSQLLEAVAHMNIHNISHRDLKSDNILVDLSEGDAYPTIVITDFGCCLCDKQNGLVIPYRSEDQDKGGNRALMAPEIANAKPGTFSWLNYKKSDLWAVGAIAYEIFNIDNPFYDKTMKLLSKSYKEEDLPELPDTIPFIIRNLVSNMLSRSTNKRLDCDVAATVAQLYLWAPSSWLKENYTLPNSNEIIQWLLCLSSKVLCERDITARNKTNTMSESVSKAQYKGRRSLPEYELIASFLRRVRLHLVRKGLKWIQELHIYN
-Prediction:
-    2.7.11.1
 Target:
+    2.7.11.1
+OPI_full_Galactica-6.7B's result:
     2.7.11.1
 GPT-4's result (version: 2023-06-01-preview):
     The provided sequence is a protein sequence, and EC numbers are usually assigned to enzymes based on the specific chemical reactions they catalyze. Since the provided sequence doesn't indicate a specific enzymatic function, it's not possible to provide an EC number for this sequence. An EC number can typically be found through annotation databases like UniProt or NCBI based on experimental data or sequence similarity to known enzymes. It would require a thorough bioinformatics analysis and comparison with known enzyme sequences. Furthermore, the annotation and the eventual EC number would reflect a prediction and not a guaranteed enzymatic function.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    The given sequence is a protein sequence. EC number or Enzyme Commission number is used to classify enzymes based on the reactions they catalyze, but it can't be directly derived from a protein sequence. Determining the EC number usually requires experimental evidence or at least knowledge of the enzyme's specific function. If you know the name of this protein or the reaction it catalyzes, I can help you with the EC number. Alternatively, for an automated prediction of the enzyme class and EC number, bioinformatics tools and databases, such as BLAST in NCBI, can be used.
+GPT-3.5's result (version: 2023-06-01-preview):
+    The EC number is a classification system used for enzymes based on the type of chemical reactions they catalyze. It cannot be determined from a protein sequence alone. EC numbers are assigned based on experimental evidence and characterization of Enzyme Commission. Therefore, without additional information, it is not possible to provide the EC number for the given sequence.
+Claude:
+    Unfortunately I cannot determine the EC number from just the input amino acid sequence alone. The EC number categorizes enzymes based on the reactions they catalyze, but this information cannot be derived from the sequence itself. To find the EC number, I would need additional information on the specific enzymatic activity and function of the protein that this sequence encodes.
+
 ```
 
 </details>
@@ -338,12 +345,18 @@ Instruction:
     Please predict its folding type based on the protein sequence. Here, a number is assigned to each folding type, ranging from 0 to 1194.
 Input:
     GSGDSHPDFPEDADVDLKDVDKILLISEDLKNIGNTFFKSQNWEMAIKKYTKVLRYVEGSRAAAEDADGAKLQPVALSCVLNIGACKLKMSDWQGAVDSCLEALEIDPSNTKALYRRAQGWQGLKEYDQALADLKKAQEIAPEDKAIQAELLKVKQKIKAQKDKEKAAY
-Prediction:
-    3
 Target:
+    3
+OPI_full_Galactica-6.7B's result:
     3
 GPT-4's result (version: 2023-06-01-preview):
     I'm sorry for the confusion, but as an AI text model developed by OpenAI, I don't have the capability to directly analyze protein sequences and predict their folding types. Understanding protein folding typically requires complex algorithms and/or deep learning models specifically trained on this task. If you have a specific database or system you are using that has numbered protein folding types, I would recommend utilizing their tools or contacting them for assistance.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    As an AI, I do not have the ability to predict the folding type of a protein sequence directly in a conversation as it requires complex computational analysis and modeling. These predictions are generally made using specific bioinformatics tools or software. I would recommend using tools such as Phyre2, I-TASSER, or SWISS-MODEL. Importantly, make sure to interpret results with the help of biological knowledge or consult with a bioinformatician or biologist.
+GPT-3.5's result (version: 2023-06-01-preview):
+    As an AI language model, I can't directly predict the folding type of a protein based on its sequence. Protein folding is a complex process that depends on various factors, including secondary and tertiary protein structures, amino acid interactions, and folding kinetics. Experimental methods such as X-ray crystallography or NMR spectroscopy, as well as computational approaches, are typically used to determine protein folding types.\n\nIf you have access to experimental data, you can analyze it using bioinformatics tools or consult domain-specific databases to determine the folding type. These tools and databases can provide information about the predicted secondary structure and potential folding patterns based on similar protein sequences or known protein structures.
+Claude:
+    Unfortunately I do not have enough context to confidently predict the folding type of a protein based solely on its amino acid sequence. Proteins can fold into many complex three-dimensional structures that are determined by various factors like the sequence itself, interactions between amino acid residues, the cellular environment, etc. Making an accurate prediction would require using advanced protein structure prediction algorithms and models trained on large databases of known protein structures and sequences. I don't have access to those resources or specific domain knowledge in structural biology. The best I can suggest is consulting protein structure databases like PDB or using established protein folding prediction tools like Rosetta or AlphaFold if you need to estimate the potential fold of this particular sequence. Let me know if you need any clarification or have additional information that could help make a more informed prediction!
 ```
 
 </details>
@@ -356,12 +369,18 @@ Instruction:
     By scrutinizing the protein's amino acid composition and sequence motifs, forecast its intracellular localization in eukaryotic cells.
 Input:
     MEDEAVLDRGASFLKHVCDEEEVEGHHTIYIGVHVPKSYRRRRRHKRKTGHREKKEKERISENYSDKSDVENADESSSSILKPLISPAAERIRFILGEEDDSPAPPQLFTELDELLAVDGQEMEWKETARWIKFEEKVEQGGERWSKPHVATLSLHSLFELRTCMEKGSIMLDREASSLPQLVEMIVDHQIETGLLKPDLKDKVTYTLLRKHRHQTKKSNLRSLADIGKTVSSASRMFTNPDNGSPAMTHRNLTSSSLNDISDKPEKDQLKNKFMKKLPRDAEASNVLVGEVDFLDSPFIAFVRLQQAVMLGALTEVPVPTRFLFILLGPKGKAKSYHEIGRAIATLMSDEVFHDIAYKAKDRQDLIAGIDEFLDEVIVLPPGEWDPAIRIEPPKSLPSSDKRKNMYSGGENVQMNGDTPPDGGHGGGGHADCEELQRTGRFCGGLIKDIKRKAPFFASDFYDALNIQALSAILFIYLATVTNAITFGGLLGDATDNMQGVLESFLGTAVSGAIFCLFAGQPLTILSSTGPVLVFERLLFNFSKDHNFDYLEFRLWIGLWSAFLCLILVATDASFLVQYFTRFTEEGFSSLISFIFIYDAFKKMIKLADYYPINSNFKVGYNTQFSCVCMPPDPVNISVSNDTTLAPEDLPTISSSNMYHNATFDWAFLTTKECLKYGGKLVGNNCGFVPDITLMSFILFLGTYTSSMALKKFKTSPYFPTTARKLISDFAIILPILIFCVIDALVGVDTPKLIVPSEFKPTSPNRGWFVAPFGGNPWWVYLAAAIPALLVTILIFMDQQITAVIVNRKEHKLKKGAGYHLDLFWVAILMVVCSFMALPWYVAATVISIAHIDSLKMETETSAPGEQPKFLGVREQRVTGTLVFILTGLSVFMAPILKFIPMPVLYGVFLYMGVASLNGVQFMDRLKLLLMPLKHQPDFIYLRHVPLRRVHLFTFLQVLCLALLWILKSTVAAIIFPVMILALVAVRKGMDYLFSQHDLSFLDDVIPEKDKKKKEDEKKKKKKKGSVDSDNDDSDCPYSEKVPSIKIPMDIMEQQPFLSDSKPSDRERSPTFLERHTSC
-Prediction:
-    membrane
 Target:
+    membrane
+OPI_full_Galactica-6.7B's result:
     membrane
 GPT-4's result (version: 2023-06-01-preview):
     Predicting the intracellular localization of a protein based on its amino acid sequence and motifs can be analyzed through bioinformatic tools like PSORT, TargetP, and SignalP. As an AI text based assistant, I don't have access to bioinformatics tools to analyze the specific sequence provided. However, these tools can help you predict the location based on features such as signal peptides, nuclear localization signals, or motifs like transmembrane regions that could hint to membrane localization.\n\nFor future reference, here are some general rules:\n1. A significant number of positively charged amino acids at the N-terminal often indicates targeting to mitochondria.\n2. If there is a continuous sequence of about 15-60 hydrophobic amino acids, it typically indicates a transmembrane domain, and such proteins are usually located in various membranes.\n3. The presence of RR or K(K/R)X(K/R) motifs might indicate nuclear localization.\n4. Proteins containing SKL or similar C-terminal motifs are typically peroxisomal.\n5. Proteins with motifs like FYRALM, FF, FXXXFXXXY and FXXXXWIXXXXF often indicate Golgi localization.\n6. Aiming for ER? Check for KDEL or DDEL C-terminal motifs.\nAgain, this sequence should be analyzed using appropriate software tools to confirm its location.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    To forecast intracellular localizations of a protein in eukaryotic cells, various computational tools or sequence-based prediction algorithms that are trained against curated databases of proteins can be used. These tools typically use conserved sequences, also known as motifs or targeting signals, and other features in the proteins.\n\nThe sequence provided seems quite lengthy, therefore a comprehensive prediction would need a specific computational tool or platform that is equipped to analyze such data. Albeit, there are multiple considerations to make, which include:\n\n1. Presence of Nuclear Localization Signals (NLS): They are responsible for protein import into the nucleus. The sequence shared contains a significant number of Lysine (K) and Arginine (R) motifs that could be potential NLS signals.\n\n2. Presence of Mitochondrial Targeting Sequences (MTS): These normally appear at the N-terminus of the protein and are rich in positively charged residues, often with a notable presence of Serine (S), Proline (P), and Threonine (T) residues. \n\n3. Signal Peptides or Transmembrane Domains: If they present, this may suggest location within the endoplasmic reticulum, Golgi apparatus or plasma membrane.\n\nPlease run the sequence through a protein localization prediction tool for a more precise prediction. Tools such as PSORT II, TargetP 1.1, MitoProt, pTARGET, SignalP, TMHMM, WoLF PSORT, or DeepLoc, among others, could be very helpful in this situation. Please note that the accuracy of prediction may vary depending on the algorithm used by each tool.
+GPT-3.5's result (version: 2023-06-01-preview):
+    Based on the amino acid composition and sequence motifs, it is difficult to accurately forecast the intracellular localization of a protein in eukaryotic cells. However, some general predictions can be made based on certain sequence motifs.\n\nFor example, the presence of signal peptides at the N-terminus can indicate targeting to the endoplasmic reticulum (ER) or secretion. Transmembrane domains can suggest localization to cellular membranes such as the plasma membrane or the ER.\n\nAdditionally, specific localization motifs like nuclear localization signals (NLS) can indicate targeting to the nucleus, while mitochondrial targeting sequences (MTS) can suggest localization to mitochondria.\n\nHowever, without additional information or experimental data, it is challenging to determine the precise intracellular localization of a protein based solely on its amino acid composition and sequence motifs.
+Claude:
+    Based on the amino acid sequence provided, here are a few observations about the potential intracellular localization of this protein in eukaryotic cells:- The protein is rich in basic amino acids like arginine (R) and lysine (K), which are characteristic of nuclear localization signals that target proteins to the nucleus. The clusters of R and K residues near the N-terminus (RRRRRHKRKT) and C-terminus (KKKK) are likely nuclear localization signals.- The protein does not seem to contain any predicted membrane-spanning domains or hydrophobic stretches that would indicate localization to cellular membranes like the plasma membrane, ER, or Golgi. - The protein contains several potential phosphorylation sites on serine, threonine, and tyrosine residues. Phosphorylation can regulate protein activity and localization. - There are no clear organelle targeting signals for mitochondria, peroxisomes, etc. Based on these observations, I would predict this protein localizes primarily to the nucleus in eukaryotic cells. The presence of putative nuclear localization signals, lack of membrane domains, and potential phosphorylation sites point to a nuclear function for this protein. Experimental verification by cell fractionation and immunofluorescence microscopy would be needed to confirm the intracellular localization. Let me know if you need any clarification or have additional details to refine the localization prediction.
 ```
 
 </details>
@@ -374,12 +393,18 @@ Instruction:
     What are the UniProtKB keywords for this specific protein sequence?
 Input:
     MRGSFFSRLPPQLSLLLLLLLLLSWRRVWTQEHIGTDPSKSPVAPVCPEACSCSPGGKANCSALALPAVPAGLSWQVRSLLLDRNRVSTLPPGAFADAGALLYLVLRENRLRSVHARAFWGLGVLQRLDLSSNQLETLSPGTFTPLRALSFLSLAGNRLALLEPSILGPLPLLRVLSLQDNSLSALEAGLLNSLPALDVLRLHGNPWACSCALRPLCTWLRKHPRPTSETETLLCVSPKLQTLNLLTDFPDNAFKQCTQSLAARDLAVVYALGPASFLASLAICLALGSVLTACGARRRRRRTTVRHLIRRQPDPEGPASLEDVGSPTTTAIQA
-Prediction:
-    Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport
 Target:
+    Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport
+OPI_full_Galactica-6.7B's result:
     Cell membrane ; Cytoplasm ; Cytoskeleton ; Disulfide bond ; Ion channel ; Ion transport ; Leucine-rich repeat ; Membrane ; Reference proteome ; Repeat ; Signal ; Transmembrane ; Transmembrane helix ; Transport
 GPT-4's result (version: 2023-06-01-preview):
     To get UniprotKB keywords for a specific protein sequence, you would have to conduct a Protein BLAST search against the UniprotKB database using the provided protein sequence. This will allow you to identify known proteins with similar sequences, and their associated UniprotKB keywords.\n\nUnfortunately, I can't perform such a database search for you, as I'm an AI powered assistant and such tasks are currently outside my capabilities. You can perform protein sequence analysis using bioinformatics tools such as NCBI's online BLAST tool or the Swiss Institute of Bioinformatics' tool called BLAST+.\n\nRemember, proper data interpretation also requires professional training in bioinformatics or a related field, so if you aren't specialized in these, it would be suggested to collaborate with someone who is.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    As an AI model developed by OpenAI, I don't have the ability to directly access online databases or tools and retrieve data in real-time. Therefore, I can't provide the specific UniProtKB keywords for your given protein sequence. To get this information, you would typically use a tool such as the BLAST (Basic Local Alignment Search Tool) to find similar protein sequences, then look up the findings in the UniProtKB database. I recommend referring to bioinformatics resources or consulting with a bioinformatics specialist for further assistance.
+GPT-3.5's result (version: 2023-06-01-preview):
+    To retrieve the UniProtKB keywords for the given protein sequence, we need to search the UniProt database using the sequence. Unfortunately, the given sequence is not in the correct format as it lacks the necessary amino acid sequence information. Could you please provide the full sequence starting with the amino acid residues?
+Claude:
+    Based on the given protein sequence, here are the likely UniProtKB keywords:- Disulfide bond- Secreted- Signal- Glycoprotein The presence of a signal peptide at the N-terminus indicates that this is a secreted protein. The multiple cysteine residues suggest the presence of disulfide bonds, which are commonly found in secreted proteins. The sequence also contains potential N-linked glycosylation sites (N-X-S/T motifs), implying this is a glycoprotein. These features match keywords commonly assigned by UniProtKB curators to secreted, disulfide-bonded glycoproteins.
 ```
 
 </details>
@@ -392,13 +417,18 @@ Instruction:
     The Gene Ontology project (GO) provides a controlled vocabulary to describe gene and gene product attributes in any organism. There are 3 disjoint categories: cellular component, molecular function and biological process. Predict the GO term for a given protein sequence.
 Input:
     MEFVTNYTLEELKKRFTELGLEPYRAKQVFRWVYKKFVTDFEKMTDLGKKHRELLKEHFAFHPLEKLDRVEAPDAVKYLFKTKDGHILETVLIKERDHYTLCVSSQIGCAVGCTFCATALDGLKRNLSTAEIIDQYLQVQQDLGEEKIRNVVFMGMGEPLANYENVRKAVEIMVSPEGLDLSKRRITISTSGIVAQIKRMAQDPVMKEVNLAVSLNAVSQKKREELMPLTKTNTLEELMEVLKNYPLPKYRRITLEYVLIKGVNDSPNDAERLAKLIGRHKKKFKVNLIPFNPDPNLPYERPALTDIMKFQKVLWKYGISNFVRFSKGVEVFGACGQLRTQRLQLQRV
-Prediction:
-    cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation 
 Target:
     cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation ; tRNA methylation
+OPI_full_Galactica-6.7B's result:
+    cytoplasm ; 4 iron, 4 sulfur cluster binding ; metal ion binding ; rRNA (adenine-C2-)-methyltransferase activity ; rRNA binding ; tRNA (adenine-C2-)-methyltransferase activity ; tRNA binding ; rRNA base methylation 
 GPT-4's result (version: 2023-06-01-preview):
     As an AI text-based model, I can't directly predict the Gene Ontology (GO) term for a given protein sequence as it requires complex bioinformatics analyses or experimental data. This type of prediction typically involves utilizing databases, algorithms, or machine learning models specifically designed for protein sequence analysis. Tools like BLAST (Basic Local Alignment Search Tool), InterPro, or specialized programs for GO term prediction such as Blast2GO can be used. It's best to consult with a bioinformatics specialist or use an appropriate computational tool for this task.
-    
+GPT-4-32k's result (version: 2023-06-01-preview):
+    As an AI text model, I'm unable to directly process protein sequences. To predict Gene Ontology (GO) terms for a protein sequence, bioinformatics tools and databases like BLAST, Panther, and InterPro are typically used. These tools help predict the protein's function and its role in biological processes based on the known functions of similar sequences.\n\nIf you have access to these tools, you can input the protein sequence to potentially get the GO terms. However, it's important to note that results should be interpreted carefully and potentially confirmed with further experimental data. If you don't know how to use these tools, I would recommend learning more about them or seeking help from someone well-versed in bioinformatics.
+GPT-3.5's result (version: 2023-06-01-preview):
+    To predict the Gene Ontology (GO) term for a given protein sequence, we need to analyze the functions, processes, and cellular components associated with the protein. However, since the provided protein sequence is quite long, it would be more efficient to use bioinformatics tools or software specifically designed for GO term prediction.\n\nOne such tool is the Functional Annotation of Protein Sequences (InterProScan), which can provide comprehensive functional annotations, including GO terms, for protein sequences. It incorporates various databases and prediction methods to give accurate results.\n\nTo use InterProScan, you can either install it locally or utilize one of the online services that provide access to the tool. Once you have your protein sequence, you can submit it to InterProScan, and it will generate a report with functional annotations, including GO terms.\n\nRemember to provide the appropriate format for the protein sequence, such as FASTA format, when using the tool.
+Claude:
+    Here are the steps I would take to predict Gene Ontology terms for a given protein sequence:1. Use a protein function prediction tool like DeepGO or ProFunc to predict GO terms directly from the protein sequence. These tools use machine learning on annotated protein datasets to predict GO terms.2. Scan the protein sequence for known domains and motifs using databases like Pfam and InterPro. The presence of certain domains and motifs can suggest particular GO terms.3. Use a tool like BLAST to search for similar annotated protein sequences. Transfer GO terms from highly similar sequences.4. Use protein structure prediction to model the 3D structure of the protein, then analyze the structure for functional clues that could suggest GO terms. 5. Look for targeting signals in the protein sequence like transit peptides or signal peptides that indicate localization to certain cellular compartments. This can predict the cellular component GO term.6. Submit the sequence to gene ontology prediction servers like Argot2.5 and FFPred to get GO term predictions.7. Use phylogenetic analysis to identify orthologs and paralogs, transfer GO terms from closely related homologs.8. Combine and cross-check predictions from multiple approaches to increase accuracy and confidence in the predicted GO terms. The more evidence from complementary methods, the better the GO prediction.In summary, I would leverage both sequence-based and structure-based bioinformatics tools and databases, using a consensus approach across multiple methods to get the most robust GO term predictions for a novel protein sequence.
 ```
 
 </details>
@@ -411,12 +441,18 @@ Instruction:
     Generate the functional description in free-text form based on the protein sequence.
 Input:
     MAAPSGVHLLVRRGSHRIFSSPLNHIYLHKQSSSQQRRNFFFRRQRDISHSIVLPAAVSSAHPVPKHIKKPDYVTTGIVPDWGDSIEVKNEDQIQGLHQACQLARHVLLLAGKSLKVDMTTEEIDALVHREIISHNAYPSPLGYGGFPKSVCTSVNNVLCHGIPDSRPLQDGDIINIDVTVYYNGYHGDTSETFLVGNVDECGKKLVEVARRCRDEAIAACRAGAPFSVIGNTISHITHQNGFQVCPHFVGHGIGSYFHGHPEIWHHANDSDLPMEEGMAFTIEPIITEGSPEFKVLEDAWTVVSLDNQRSAQFEHTVLITSRGAQILTKLPHEA
-Prediction:
-    Removes the N-terminal methionine from nascent proteins. The N-terminal methionine is often cleaved when the second residue in the primary sequence is small and uncharged (Met-Ala-, Cys, Gly, Pro, Ser, Thr, or Val). Requires deformylation of the N(alpha)-formylated initiator methionine before it can be hydrolyzed.
 Target:
     Removes the N-terminal methionine from nascent proteins. The N-terminal methionine is often cleaved when the second residue in the primary sequence is small and uncharged (Met-Ala-, Cys, Gly, Pro, Ser, Thr, or Val). Requires deformylation of the N(alpha)-formylated initiator methionine before it can be hydrolyzed (By similarity). May play a role in colon tumorigenesis.
+OPI_full_Galactica-6.7B's result:
+    Removes the N-terminal methionine from nascent proteins. The N-terminal methionine is often cleaved when the second residue in the primary sequence is small and uncharged (Met-Ala-, Cys, Gly, Pro, Ser, Thr, or Val). Requires deformylation of the N(alpha)-formylated initiator methionine before it can be hydrolyzed.
 GPT-4's result (version: 2023-06-01-preview):
     This protein sequence appears to be from a large and complex protein that may play different roles depending on the type of cell in which it is expressed. A few notable features can be identified:\n\n1. A variety of highly conserved motifs such as GSHRIFSSPL which could suggest a particular functional role. \n\n2. Several occurrences of the amino acids Histidine (H) and Arginine (R) which are known to be involved in binding to DNA or RNA.\n\n3. Amino acid pattern suggest presence of potential enzymatic activity e.g. Serine (S), Aspartate(D) and Glycine(G). \n\n4. A potential signal peptide at the N-terminal of the protein (MAAPSGVHLL) which might suggest that this protein could be secreted or localized to a specific cellular compartment. \n\n5. There are numerous occurrences of the residues Cysteine (C), which could form disulfide bonds, important for the protein's 3-dimensional structure.\n\nOverall, the exact function of this protein is still not entirely clear based on the sequence alone. However, the sequence points to roles in possibly enzymatic activity, reparative action, signal transduction, protein synthesis, protein folding and stabilization. The protein may also be involved in binding to DNA or RNA. Further experimental analysis and annotation are required to confirm these predictions and to gain a more complete understanding of this protein's role in the cell.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    This is a complex protein sequence composed of various amino acids. The sequence starts with Methionine (abbreviated as M or MAAPSGVHLLVRRGSHRIFSSPLNHIYLHKQSSSQQRRNFFFRRQRDISHSIVLPAAVSSAHPVPKHIKKPDYVTTGIVPDWGDSIEVKN) followed by other amino acids forming a chain. There are several distinct motifs identifiable in this sequence which could potentially serve as a binding site for other molecules or play a critical role in the protein's function. \n\nThe aspartic acid residues (D) indicate potential enzymatic activity, possibly acting as a protease, an enzyme which breaks down proteins and peptides. This hypothesis is further backed by Glycines (G) which are often found in turns and loops of protein structures, meaning they have potential catalytic or binding capacities. \n\nThe presence of the cysteine (C) residues suggests that this protein could be involved in redox reactions or potentially form disulfide bonds thus contributing to the structural stability of the protein. \n\nThe sequence also contains multiple occurrences of arginine (R) residues, indicating possible interaction sites for phosphate groups or nucleic acids given arginine's positive charge at physiological pH. This might suggest a role in protein-protein interaction, DNA binding, or cell signaling, among others. \n\nOverall, based on this sequence, this protein could potentially serve roles in enzymatic activity, cell-signaling, molecular binding, or structural stability in cellular functions. However, these interpretations are theoretical and a full understanding of the protein's function often requires additional experiments and context about the protein's biological role and environment.
+GPT-3.5's result (version: 2023-06-01-preview):
+    The protein sequence consists of a series of amino acids and indicates the specific arrangement and composition of the protein. It does not provide any functional description or specific information about the protein's function or purpose. Additional analysis and research are required to determine the functional properties and role of the protein based on its sequence.
+Claude:
+    Here is a free-text functional description generated based on the provided protein sequence:This protein appears to be a serine protease based on the presence of the catalytic triad residues histidine, aspartic acid, and serine. The histidine residue enables nucleophilic attack, the aspartic acid positions and polarizes the histidine, and the serine acts as the nucleophile. This catalytic triad is conserved in chymotrypsin-like serine proteases. The protein contains several cysteine residues that likely form disulfide bonds to help maintain the tertiary structure. There are also multiple glycine residues which confer flexibility to the polypeptide chain. Several amino acids identified in the sequence are characteristic of the chymotrypsin family of serine proteases: Glycine 193, Aspartic Acid 102, and Serine 195. These amino acids form the charge relay system that mediates catalytic activity.The protein appears to contain an N-terminal signal peptide based on the presence of several hydrophobic amino acids at the start of the sequence. This likely targets the protein for secretion. Overall, this protein has the sequence characteristics of a secreted chymotrypsin-like serine protease, including the properly positioned catalytic triad residues and surrounding amino acids that facilitate enzymatic function.
 ```
 
 </details>
@@ -429,12 +465,18 @@ Instruction:
     According to the relevant data reported in the scientific literature, the Gene symbol of a given protein can be used to predict which tissues the protein is expressed in.
 Input:
     TMEM198
-Prediction:
-    adrenal gland, appendix, bone marrow, breast, bronchus, caudate, cerebellum, cerebral cortex, cervix, colon, duodenum, endometrium, epididymis, esophagus, fallopian tube, gallbladder, heart muscle, hippocampus, kidney, liver, lung, lymph node, nasopharynx, oral mucosa, ovary, pancreas, parathyroid gland, placenta, prostate, rectum, salivary gland, seminal vesicle, skeletal muscle, skin, small intestine, smooth muscle, soft tissue, spleen, stomach, testis, thyroid gland, tonsil, urinary bladder
 Target:
     adrenal gland, appendix, breast, bronchus, cerebral cortex, colon, fallopian tube, gallbladder, kidney, nasopharynx, prostate, rectum, salivary gland, seminal vesicle, skeletal muscle, small intestine, stomach, urinary bladder
+OPI_full_Galactica-6.7B's result:
+    adrenal gland, appendix, bone marrow, breast, bronchus, caudate, cerebellum, cerebral cortex, cervix, colon, duodenum, endometrium, epididymis, esophagus, fallopian tube, gallbladder, heart muscle, hippocampus, kidney, liver, lung, lymph node, nasopharynx, oral mucosa, ovary, pancreas, parathyroid gland, placenta, prostate, rectum, salivary gland, seminal vesicle, skeletal muscle, skin, small intestine, smooth muscle, soft tissue, spleen, stomach, testis, thyroid gland, tonsil, urinary bladder
 GPT-4's result (version: 2023-06-01-preview):
     I'm sorry, as an AI, I don't currently have the capability to access real-time data or perform biological simulations. I recommend using bioinformatics databases such as UniProt, NCBI Gene, or the Human Protein Atlas for such queries. You should be able to find up-to-date and comprehensive information about the gene TMEM198, including its tissue expression pattern.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    As an AI language model developed by Open AI, I'm afraid I don't have real-time data access capabilities, and therefore, I don't have the ability to fetch specific data on gene expression, or in this case, the specific expression data of the TMEM198 gene. I would recommend you search for this information through appropriate scientific literature databases or gene expression databases such as UniProt, GenBank, or PubMed. These resources can provide specific, up-to-date, and accurate data about the tissue expression of this particular gene.
+GPT-3.5's result (version: 2023-06-01-preview):
+    According to the available data, the gene TMEM198 is predominantly expressed in the following tissues:\n\n1. Brain\n2. Lung\n3. Liver\n4. Kidney\n5. Testis\n6. Heart\n7. Adrenal gland\n8. Small intestine\n9. Spleen\n10. Stomach\n\nPlease note that these are the commonly reported tissues for TMEM198 expression, but expression levels and patterns may vary depending on specific experimental conditions or circumstances.
+Claude:
+    Unfortunately I do not have access to detailed data on gene expression patterns for specific proteins. However, based on the gene symbol TMEM198 provided, here is a general overview of what is known:TMEM198 stands for transmembrane protein 198. This gene encodes a protein that is thought to be involved in cholesterol homeostasis. TMEM198 is expressed in several tissues throughout the body, including:- Liver - TMEM198 is highly expressed in hepatocytes, where it likely plays a role in regulating cholesterol synthesis and uptake.- Intestinal epithelium - TMEM198 is expressed in enterocytes of the small intestine and colon, where it may regulate dietary cholesterol absorption. - Macrophages - TMEM198 is expressed in macrophages and helps control cholesterol efflux during foam cell formation.- Adrenal glands - TMEM198 is found in the adrenal cortex, where it may be involved in steroid hormone synthesis. - Kidney - Lower levels of TMEM198 are expressed in the kidney, potentially regulating renal cholesterol handling.- Fat tissue - Adipocytes show some expression of TMEM198, where it could modulate lipid metabolism.So in summary, TMEM198 is widely expressed, but found at highest levels in the liver, intestines, macrophages, and adrenal glands - tissues involved in cholesterol homeostasis and steroid synthesis. More detailed expression data would be needed to confirm its presence across all tissue types. Let me know if you need any clarification or have additional questions!
 ```
 
 </details>
@@ -447,12 +489,18 @@ Instruction:
     Return the name of the cancer corresponding to the given gene symbol.
 Input:
     FOXL2
-Prediction:
-    granulosa-cell tumour of the ovary
 Target:
+    granulosa-cell tumour of the ovary
+OPI_full_Galactica-6.7B's result:
     granulosa-cell tumour of the ovary
 GPT-4's result (version: 2023-06-01-preview):
     The gene symbol FOXL2 has been primarily associated with Ovarian Granulosa Cell Tumor. It is also related to conditions like Blepharophimosis Syndrome. However, it should be noted that genetic variance can have multifactorial implications, and presence or mutation of this gene does not necessarily signify a confirm diagnosis of the diseases. Medical consultation should be sought for an accurate diagnosis.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    The FOXL2 gene is associated with Ovarian Granulosa Cell Tumor and Blepharophimosis-Ptosis-Epicanthus Inversus Syndrome (BPES).
+GPT-3.5's result (version: 2023-06-01-preview):
+    The cancer corresponding to the gene symbol FOXL2 is Granulosa Cell Tumor of the Ovary.
+Claude:
+    FOXL2 is associated with granulosa cell tumors, a type of ovarian cancer.
 ```
 
 </details>
@@ -465,12 +513,18 @@ Instruction:
     Give back the cancer name that is associated with the provided gene name.
 Input:
     immunoglobulin lambda locus
-Prediction:
-    Burkitt lymphoma
 Target:
+    Burkitt lymphoma
+OPI_full_Galactica-6.7B's result:
     Burkitt lymphoma
 GPT-4's result (version: 2023-06-01-preview):
     The gene \"Immunoglobulin Lambda Locus\" is associated with several types of leukemia and lymphoma, including Chronic Lymphocytic Leukemia and Non-Hodgkin Lymphoma.
+GPT-4-32k's result (version: 2023-06-01-preview):
+    The gene \"Immunoglobulin Lambda Locus\" is associated with several types of cancers, one of them is Non-Hodgkin Lymphoma.
+GPT-3.5's result (version: 2023-06-01-preview):
+    The cancer name associated with the gene immunoglobulin lambda locus is B-cell lymphoma.
+Claude:
+    Unfortunately I do not have enough context to determine which specific cancer may be associated with the immunoglobulin lambda locus gene. The immunoglobulin lambda locus encodes immunoglobulin lambda light chains, which are components of antibodies made by B cells. Abnormalities in this locus could potentially be associated with different types of B cell cancers, such as certain types of non-Hodgkin lymphoma or multiple myeloma. To provide a more definitive cancer name association, I would need more details about the specific genetic alteration, such as a translocation or mutation involving the immunoglobulin lambda locus. General mentions of the immunoglobulin lambda locus are not enough for me to pinpoint a specific cancer type. Please let me know if you can provide any additional context.
 ```
 
 </details>
