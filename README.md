@@ -310,10 +310,38 @@ In the commands above, ```model_idx```is the model index you can allocate to you
 | Knowledge Mining       | Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test    |    -     |   0.554   | 0.433  | 0.465 |    -    |
 | Knowledge Mining       | Cancer Prediction from Gene Name            | gene_name_to_cancer_test      |    -     |   0.507   | 0.400  | 0.429 |    -    |
 
-## Prediction by OPI_full_Galactica-6.7B/GPT-4/GPT-4-32k/GPT-3.5/LLaMA-2-13B-chat's result/Claude-2's result v.s. Target
+## Prediction by OPI_full_Galactica-6.7B/GPT-4/GPT-4-32k/GPT-3.5/LLaMA-2-13B-chat/Claude-2 v.s. Target
+
+<div align="center">
+<img src=model_comparison/Task1.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task2.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task3.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task4.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task5.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task6.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task7.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task8.png />
+</div>
+<div align="center">
+<img src=model_comparison/Task9.png />
+</div>
 
 <details>
-<summary>EC Number Prediction</summary>
+<summary>Task 1: EC Number Prediction</summary>
 
 ```
 Instruction:
@@ -340,7 +368,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Fold Type Prediction</summary>
+<summary>Task 2: Fold Type Prediction</summary>
 
 ```
 Instruction:
@@ -366,7 +394,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Subcellular Localization Prediction</summary>
+<summary>Task 3: Subcellular Localization Prediction</summary>
 
 ```
 Instruction:
@@ -392,7 +420,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Function Keywords Prediction</summary>
+<summary>Task 4: Function Keywords Prediction</summary>
 
 ```
 Instruction:
@@ -424,7 +452,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Gene Ontology(GO) Terms Prediction</summary>
+<summary>Task 5: Gene Ontology(GO) Terms Prediction</summary>
 
 ```
 Instruction:
@@ -461,7 +489,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Function Description Prediction</summary>
+<summary>Task 6: Function Description Prediction</summary>
 
 ```
 Instruction:
@@ -494,7 +522,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Tissue Location Prediction from Gene Symbol</summary>
+<summary>Task 7: Tissue Location Prediction from Gene Symbol</summary>
 
 ```
 Instruction:
@@ -532,7 +560,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Cancer Prediction from Gene Symbol</summary>
+<summary>Task 8: Cancer Prediction from Gene Symbol</summary>
 
 ```
 Instruction:
@@ -559,7 +587,7 @@ Claude-2's result:
 </details>
 
 <details>
-<summary>Cancer Prediction from Gene Name</summary>
+<summary>Task 9: Cancer Prediction from Gene Name</summary>
 
 ```
 Instruction:
