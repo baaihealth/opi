@@ -50,7 +50,7 @@ output:
 We release the first curated OPI dataset corresponding to the 9 evaluation tasks to facilitate further research in protein biology domain. We are warmly welcome further improvenmet or supplement to this dataset.
 
 **How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://huggingface.co/datasets/BAAI/OPI) from HuggingFace.
-Once finished downloading the **OPI_DATA** from Google Drive, please put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** folder in this repo. 
+Once finished downloading the **OPI_DATA** dataset, please put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** folder in this repo. 
 
 The **OPI dataset folder structure** is as follows:
 ```
