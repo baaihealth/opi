@@ -214,17 +214,8 @@ cd output_dir
 python zero_to_fp32.py . pytorch_model.bin
 ```
 
-### 4. Split pytorch_model.bin into chunks to speedup loading for inference
-After step 3, you will get the **pytorch_model.bin** file. You can further split it to small chunks, e.g., pytorch_model-00001-of-00004.bin
-pytorch_model-00002-of-00004.bin, pytorch_model-00003-of-00004.bin, pytorch_model-00004-of-00004.bin, in order to speedup loading it when inferenceing. However, it is not a must, if you don't want. If you would like to split it, please do like this:
-```
-cd model_split
-python model_split.py --model_idx OPI-instruction-tuned-model-name
-```
-Then you will get a checkpoint folder suffixed with "**chunked**", which you can take as the **pretrained model path** for later evaluation job.
-
-### 5. How to access OPI-instruction-tuned Galactica-6.7B model?
-In this repo, we release the OPI_full_Galactica-6.7B model which is fine-funed on OPI full dataset, which can be accessed from [HuggingFace](...). Please feel free to contact us if there is any question.
+### 4. How to access OPI-instruction-tuned Galactica-6.7B model?
+In this repo, we release the OPI_full_Galactica-6.7B model which is fine-funed on OPI full dataset, which can be accessed from [HuggingFace](https://huggingface.co/BAAI/OPI_full_Galactica-6.7B). Please feel free to contact us if there is any question.
 
 ## OPEval: Nine Evaluation tasks
 
