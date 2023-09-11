@@ -607,3 +607,8 @@ Claude-2's result:
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually demonstrate the ability of OPI_full_Galactica-6.7B model on various evaluation tasks.
 
 ![OPI Demo](./OPI_demo.gif)
+
+## Contact Information
+For help or issues using the repos, please submit a GitHub issue.
+
+For other communications, please contact Qiwei Ye (qwye@baai.ac.cn).
