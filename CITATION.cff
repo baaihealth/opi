@@ -13,7 +13,7 @@ title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeli
 date-released: 2023-06-13
 url: "https://github.com/baaihealth/opi"
 preferred-citation:
-  type: misc
+  type: unpublished
   authors:
   - family-names: "Lin"
     given-names: "Wenjun"
@@ -25,3 +25,4 @@ preferred-citation:
     given-names: "Qiwei"
   title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeling"
   year: 2023
+  url: "https://github.com/baaihealth/opi"
