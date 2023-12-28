@@ -608,6 +608,17 @@ We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually d
 
 ![OPI Demo](./OPI_demo.gif)
 
+## Citation
+If you find OPI helpful to your research, please consider starring and citing this repo. Thank you for your support!
+```
+@unpublished{Lin_OPI_Exploring_and_2023,
+author = {Lin, Wenjun and Wang, Hui and Xiao, Hongwang and Ye, Qiwei},
+title = {{OPI: Exploring and Benchmarking Large Language Models for Protein Modeling}},
+url = {https://github.com/baaihealth/opi},
+year = {2023}
+}
+```
+
 ## Contact Information
 For help or issues using the repos, please submit a GitHub issue.
 
