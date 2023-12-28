@@ -26,3 +26,29 @@ preferred-citation:
   title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeling"
   year: 2023
   url: "https://github.com/baaihealth/opi"
+  type: code
+  authors:
+  - family-names: "Lin"
+    given-names: "Wenjun"
+  - family-names: "Wang"
+    given-names: "Hui"
+  - family-names: "Xiao"
+    given-names: "Hongwang"
+  - family-names: "Ye"
+    given-names: "Qiwei"
+  title: "Code of OPI"
+  year: 2023
+  url: "https://github.com/baaihealth/opi"
+  type: data
+  authors:
+  - family-names: "Lin"
+    given-names: "Wenjun"
+  - family-names: "Wang"
+    given-names: "Hui"
+  - family-names: "Xiao"
+    given-names: "Hongwang"
+  - family-names: "Ye"
+    given-names: "Qiwei"
+  title: "Data of OPI"
+  year: 2023
+  url: "https://github.com/baaihealth/opi"
