@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use the code, data or model, please cite it as below."
+authors:
+- family-names: "Lin"
+  given-names: "Wenjun"
+- family-names: "Wang"
+  given-names: "Hui"
+- family-names: "Xiao"
+  given-names: "Hongwang"
+- family-names: "Ye"
+  given-names: "Qiwei"
+title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeling"
+date-released: 2023-06-13
+url: "https://github.com/baaihealth/opi"
+preferred-citation:
+  type: misc
+  authors:
+  - family-names: "Lin"
+    given-names: "Wenjun"
+  - family-names: "Wang"
+    given-names: "Hui"
+  - family-names: "Xiao"
+    given-names: "Hongwang"
+  - family-names: "Ye"
+    given-names: "Qiwei"
+  title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeling"
+  year: 2023
