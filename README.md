@@ -21,6 +21,12 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 
 **Usage and License Notices:** [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
+## Dataset Update
+The previous version of OPI dataset is based on the **release 2022_01** of UniProtKB/Swiss-Prot protein knowledgebase. At current, OPI is updated to contain the latest **release 2023_05**, which can be accessed via the dataset file [OPI_updated_160k.json](https://huggingface.co/datasets/BAAI/OPI/blob/main/OPI_DATA/OPI_updated_160k.json) from Huggingface.
+
+Reference:
+- https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2022_01/knowledgebase/UniProtKB_SwissProt-relstat.html
+- https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2023_05/knowledgebase/UniProtKB_SwissProt-relstat.html
 
 ## OPI dataset construction pipeline
 The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplementary material of our [manuscript](https://openreview.net/forum?id=ecnshnvES6) which has been submitted to [NeurIPS 2023 Datasets and Benchmarks Track](https://nips.cc/Conferences/2023/CallForDatasetsBenchmarks). The following figure shows the general construction process.
