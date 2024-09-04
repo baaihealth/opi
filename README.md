@@ -14,21 +14,16 @@
 
 ## Overview
 This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a high-quality and comprehensive protein instruction dataset with which LLMs can be adapted to protein-related tasks via instruction tuning and evaluated on these tasks.
-<!-- ![Overview](./Overview.png) -->
-<div align="center">
-<img src=./demo_figures/OPI_experiment_outline.png />
-</div>
 
-**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) is intended and licensed for research use only. [Llama-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
+<div align="center"><img src=./demo_figures/OPI_experiment_outline.png /></div>
+
+**Usage and license notices:** [Galactica](https://github.com/paperswithcode/galai) is intended and licensed for research use only. [Llama-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
 
 ## OPI dataset construction pipeline
 The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplementary material of our manuscript which has been submitted to Foundation Models for Science Workshop (NeurIPS 2024). The following figure shows the overall construction process of OPI.
 
-<!-- ![OPI construction](./OPI_data.png#pic_center) -->
-<div align="center">
-<img src=./demo_figures/OPI_data.png />
-</div>
+<div align="center"><img src=./demo_figures/OPI_data.png /></div>
 
 
 - **An example of OPI training data:**
@@ -50,17 +45,17 @@ output:
 {"id": "seed_task_0", "name": "EC number of price dataset from CLEAN", "instruction": "Return the EC number of the protein sequence.", "instances": [{"input": "MAIPPYPDFRSAAFLRQHLRATMAFYDPVATDASGGQFHFFLDDGTVYNTHTRHLVSATRFVVTHAMLYRTTGEARYQVGMRHALEFLRTAFLDPATGGYAWLIDWQDGRATVQDTTRHCYGMAFVMLAYARAYEAGVPEARVWLAEAFDTAEQHFWQPAAGLYADEASPDWQLTSYRGQNANMHACEAMISAFRATGERRYIERAEQLAQGICQRQAALSDRTHAPAAEGWVWEHFHADWSVDWDYNRHDRSNIFRPWGYQVGHQTEWAKLLLQLDALLPADWHLPCAQRLFDTAVERGWDAEHGGLYYGMAPDGSICDDGKYHWVQAESMAAAAVLAVRTGDARYWQWYDRIWAYCWAHFVDHEHGAWFRILHRDNRNTTREKSNAGKVDYHNMGACYDVLLWALDAPGFSKESRSAALGRP", "output": "5.3.1.7"}], "is_classification": false}
 ```
 
-## OPI Dataset Overview 
+## OPI dataset overview 
 We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adatpting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
 
-**Accessing the OPI Dataset:**
+**Accessing the OPI dataset:**
 The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a seubset for each specific task as well as the full dataset file: [OPI_full_1.61M_train.json](./OPI_DATA/OPI_full_1.61M_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
 ```
 cd OPI_DATA
 python merge_task_train_data.py --output OPI_merged_train.json
 ```
 
-**OPI Dataset Folder Structure:**
+**OPI Dataset folder structure:**
 ```
 ./OPI_DATA/
 └── SU
@@ -121,7 +116,7 @@ python merge_task_train_data.py --output OPI_merged_train.json
 ```
 
 
-## OPEval: Nine Evaluation Tasks Using the OPI Dataset
+## OPEval: Nine evaluation tasks using the OPI dataset
 
 To assess the effectiveness of instruction tuning with the OPI dataset, we developed OPEval, which comprises three categories of evaluation tasks. Each category includes three specific tasks. The table below outlines the task types, names, and the corresponding sizes of the training and testing sets.
 
@@ -210,7 +205,7 @@ Evalution procedures are outlined in the [evaluation](./evaluation.md) guide.
 Comprehensive evaluation results are detailed in th [evaluation_results](./evaluation_results.md) document.
 
 
-## Prediction Comparison among some SOTA mdoels
+## Prediction comparison with SOTA mdoels
 
 Prediction by OPI-tuned model, GPT-4o, Llama-3.1-8B-Instruct, Claude 3.5 Sonnet vs. Ground Trurh Answers are shown in in the [model_compare](./model_compare.md) document.
 
