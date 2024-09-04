@@ -3,14 +3,16 @@ message: "If you use the code, data or model, please cite it as below."
 preferred-citation:
   type: unpublished
   authors:
+  - family-names: "Xiao"
+    given-names: "Hongwang"
   - family-names: "Lin"
     given-names: "Wenjun"
   - family-names: "Wang"
     given-names: "Hui"
-  - family-names: "Xiao"
-    given-names: "Hongwang"
+  - family-names: "Zheng"
+    given-names: "Liu"
   - family-names: "Ye"
     given-names: "Qiwei"
-  title: "OPI: Exploring and Benchmarking Large Language Models for Protein Modeling"
+  title: "OPI: An Open Instruction Dataset for Adapting Large Language Models to Protein-Related Tasks"
   year: 2023
   url: "https://github.com/baaihealth/opi"
