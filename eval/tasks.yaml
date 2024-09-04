@@ -4,41 +4,41 @@ all_task_Llama-3.1-8B-Instruct:
     name: LLM_checkpoints/Llama3.1/${model_name}
   data:
     test_files:
-      - OPI_DATAv1/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl
-      - OPI_DATAv1/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl
-      - OPI_DATAv1/SU/Subcellular_localization/test/subcell_loc_test.jsonl
-      - OPI_DATAv1/SU/Fold_type/test/fold_type_test.jsonl
-      - OPI_DATAv1/AP/Function/test/UniProtSeq_function_test.jsonl
-      - OPI_DATAv1/AP/Function/test/IDFilterSeq_function_test.jsonl
-      - OPI_DATAv1/AP/Function/test/CASPSimilarSeq_function_test.jsonl
-      - OPI_DATAv1/AP/GO/test/UniProtSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/GO/test/IDFilterSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/GO/test/CASPSimilarSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/UniProtSeq_keywords_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/IDFilterSeq_keywords_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/CASPSimilarSeq_keywords_test.jsonl
-      - OPI_DATAv1/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl
-      - OPI_DATAv1/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl
-      - OPI_DATAv1/KM/gSymbol2Tissue/test/gene_symbol_to_tissue_test.jsonl
+      - OPI_DATA/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl
+      - OPI_DATA/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl
+      - OPI_DATA/SU/Subcellular_localization/test/subcell_loc_test.jsonl
+      - OPI_DATA/SU/Fold_type/test/fold_type_test.jsonl
+      - OPI_DATA/AP/Function/test/UniProtSeq_function_test.jsonl
+      - OPI_DATA/AP/Function/test/IDFilterSeq_function_test.jsonl
+      - OPI_DATA/AP/Function/test/CASPSimilarSeq_function_test.jsonl
+      - OPI_DATA/AP/GO/test/UniProtSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/GO/test/IDFilterSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/GO/test/CASPSimilarSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_test.jsonl
+      - OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_test.jsonl
+      - OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_test.jsonl
+      - OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl
+      - OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl
+      - OPI_DATA/KM/gSymbol2Tissue/test/gene_symbol_to_tissue_test.jsonl
 
 all_task_OPI_full_1.61M_v2:
   model:
     name: LLM_checkpoints/OPI_IT/${model_name}_OPI_full_1.61M_train_e1
   data:
     test_files:
-      - OPI_DATAv1/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl
-      - OPI_DATAv1/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl
-      - OPI_DATAv1/SU/Subcellular_localization/test/subcell_loc_test.jsonl
-      - OPI_DATAv1/SU/Fold_type/test/fold_type_test.jsonl
-      - OPI_DATAv1/AP/Function/test/UniProtSeq_function_test.jsonl
-      - OPI_DATAv1/AP/Function/test/IDFilterSeq_function_test.jsonl
-      - OPI_DATAv1/AP/Function/test/CASPSimilarSeq_function_test.jsonl
-      - OPI_DATAv1/AP/GO/test/UniProtSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/GO/test/IDFilterSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/GO/test/CASPSimilarSeq_go_terms_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/UniProtSeq_keywords_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/IDFilterSeq_keywords_test.jsonl
-      - OPI_DATAv1/AP/Keywords/test/CASPSimilarSeq_keywords_test.jsonl
-      - OPI_DATAv1/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl
-      - OPI_DATAv1/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl
-      - OPI_DATAv1/KM/gSymbol2Tissue/test/gene_symbol_to_tissue_test.jsonl
+      - OPI_DATA/SU/EC_number/test/CLEAN_EC_number_price_test.jsonl
+      - OPI_DATA/SU/EC_number/test/CLEAN_EC_number_new_test.jsonl
+      - OPI_DATA/SU/Subcellular_localization/test/subcell_loc_test.jsonl
+      - OPI_DATA/SU/Fold_type/test/fold_type_test.jsonl
+      - OPI_DATA/AP/Function/test/UniProtSeq_function_test.jsonl
+      - OPI_DATA/AP/Function/test/IDFilterSeq_function_test.jsonl
+      - OPI_DATA/AP/Function/test/CASPSimilarSeq_function_test.jsonl
+      - OPI_DATA/AP/GO/test/UniProtSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/GO/test/IDFilterSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/GO/test/CASPSimilarSeq_go_terms_test.jsonl
+      - OPI_DATA/AP/Keywords/test/UniProtSeq_keywords_test.jsonl
+      - OPI_DATA/AP/Keywords/test/IDFilterSeq_keywords_test.jsonl
+      - OPI_DATA/AP/Keywords/test/CASPSimilarSeq_keywords_test.jsonl
+      - OPI_DATA/KM/gName2Cancer/test/gene_name_to_cancer_test.jsonl
+      - OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl
+      - OPI_DATA/KM/gSymbol2Tissue/test/gene_symbol_to_tissue_test.jsonl
