@@ -19,7 +19,7 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 <img src=./demo_figures/OPI_experiment_outline.png />
 </div>
 
-**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) is intended and licensed for research use only. [LLaMA-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
+**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) is intended and licensed for research use only. [Llama-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
 
 ## OPI dataset construction pipeline
@@ -54,7 +54,7 @@ output:
 We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adatpting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
 
 **Accessing the OPI Dataset:**
-The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a seubset for each specific task as well as the full dataset file: [OPI-full-1.61M_train.json](./OPI_DATA/OPI_full_1.61M_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
+The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a seubset for each specific task as well as the full dataset file: [OPI_full_1.61M_train.json](./OPI_DATA/OPI_full_1.61M_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
 ```
 cd OPI_DATA
 python merge_task_train_data.py --output OPI_merged_train.json
@@ -222,5 +222,5 @@ We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually d
 ## Acknowledgement
 The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
 Some codes are adapted from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
-LLaMA-3: [LLaMA-3](https://github.com/meta-llama/llama3) 
+Llama-3: [Llama-3](https://github.com/meta-llama/llama3)
 Galactica: [Galactica](https://github.com/paperswithcode/galai)
