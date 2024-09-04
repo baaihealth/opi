@@ -212,8 +212,8 @@ Comprehensive evaluation results are detailed in th [evaluation_results](./evalu
 
 
 ## Prediction Comparison: OPI-tuned model, GPT-4o, Llama-3.1-8B-Instruct, Claude 3.5 Sonnet vs. Ground Trurh Answers
-[task1_EC_number](demo_figures/task1_EC_number.pdf)
 
+<embed src="demo_figures/task1_EC_number.pdf" width="600" height="400" />
 <!-- 
 <div align="center">
 <img src=demo_figures/Task1.png />
