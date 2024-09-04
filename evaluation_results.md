@@ -354,3 +354,8 @@ Each testing result is derived from the Galactica-6.7B model that has been fine-
     </tr>
   </tbody>
 </table>
+
+## 3. Performance comparison between OPI-full-1.61M-Llama-3.1-8B-Instruct and OPI-full-1.61M-Galactica-6.7B across 9 tasks. 
+
+It highlights task-specific strengths of each model, with Llama-3.1 excelling in EC number prediction and fold type prediction tasks whose prediction targets are numeric type, such as *3.4.11.4* and *10*. Galactica leads in all three AP tasks, as well as cancer prediction from gene symbols whose prediction targets are character type.
+<div align="center"><img src=bar_chart/llama3.1_8b_instruct-vs-galactica_6.7b.png /></div>
