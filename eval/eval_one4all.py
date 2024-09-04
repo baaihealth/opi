@@ -8,7 +8,7 @@ import hydra
 from hydra import initialize, compose
 from omegaconf import DictConfig, OmegaConf
 from transformers import LlamaForCausalLM, LlamaTokenizer, AutoTokenizer,AutoModelForCausalLM
-import sys;sys.path.append("/home/hwxiao/mycodes/LLM/OPI-gitee") 
+import sys;sys.path.append("./OPI") 
 from utils import jdump
 from transformers import StoppingCriteria, GenerationConfig
 
@@ -210,23 +210,17 @@ if __name__ == "__main__":
             "  - Llama-3.1-8B-Instruct\n"
             "\n"
             "Available Task names:\n"
-            "  - all_task_llama3.1\n"
-            "  - all_task_OPI_full_1.46M_v2\n"
-            "  - all_task_OPI_full_1.61M_v2\n"
-            "  - EC_number70\n"
-            "  - EC_number100\n"
+            "  - all_task_Llama-3.1-8B-Instruct\n"
+            "  - all_task_OPI_full_1.61M\n"
+            "  - EC_number\n"
             "  - Subcellular_localization\n"
             "  - Fold_type\n"
-            "  - Domain\n"
-            "  - Function0.01\n"
-            "  - Function\n"
-            "  - GO0.01\n"
-            "  - GO\n"
-            "  - Keywords0.01\n"
             "  - Keywords\n"
-            "  - gName2Cancer\n"
-            "  - gSymbol2Cancer\n"
+            "  - GO\n"
+            "  - Function\n"
             "  - gSymbol2Tissue\n"
+            "  - gSymbol2Cancer\n"
+            "  - gName2Cancer\n"
         )
     
     model_name = sys.argv[1]

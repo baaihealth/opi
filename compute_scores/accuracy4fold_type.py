@@ -42,12 +42,7 @@ def compute_accuracy4fold_type(eval_file, test_files):
 
 # Example usage (assuming this script is run directly)
 if __name__ == "__main__":
-    # eval_file_path="eval/eval_galai/eval_galai_opi_output/Remote_valid_opi_full_6.7b_e3_0.2_0.9_1.json"
-    # eval_file_path="eval/eval_galai/eval_galai_opi_output/Remote_valid_opi_full_6.7b_e10_0.2_0.9_1.json"
-    # eval_file_path="eval/eval_galai/eval_galai_opi_output/Remote_valid_remote_6.7_e30.json"
-    # eval_file_path="eval/eval_galai/eval_galai_opi_output/Remote_valid_remote_6.7.json"
-    eval_file_path="latest_eval_results/Galactica-6.7B_OPI_full_train_1.46M_e3/fold_type_test_opi_full_6.7b_e3_0.2_0.9_1.json"
-    # eval_file_path = 'latest_eval_results/Llama-3.1-8B-Instruct_fold_type_train_e3/Llama-3.1-8B-Instruct_fold_type_train_e3_fold_type_test_predictions.json'
+    eval_file_path = 'latest_eval_results/Llama-3.1-8B-Instruct_fold_type_train_e3/Llama-3.1-8B-Instruct_fold_type_train_e3_fold_type_test_predictions.json'
     test_file_paths = [
         'compute_scores/remote_homology_test_fold_holdout.json',
         'compute_scores/remote_homology_test_superfamily_holdout.json',
