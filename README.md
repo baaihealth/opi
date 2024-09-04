@@ -19,7 +19,7 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 <img src=./demo_figures/OPI_experiment_outline.png />
 </div>
 
-**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. [LLaMA-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
+**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) is intended and licensed for research use only. [LLaMA-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
 
 ## OPI dataset construction pipeline
@@ -212,7 +212,9 @@ Comprehensive evaluation results are detailed in th [evaluation_results](./evalu
 
 
 ## Prediction Comparison: OPI-tuned model, GPT-4o, Llama-3.1-8B-Instruct, Claude 3.5 Sonnet vs. Ground Trurh Answers
+[task1_EC_number](demo_figures/task1_EC_number.pdf)
 
+<!-- 
 <div align="center">
 <img src=demo_figures/Task1.png />
 </div>
@@ -239,7 +241,7 @@ Comprehensive evaluation results are detailed in th [evaluation_results](./evalu
 </div>
 <div align="center">
 <img src=demo_figures/Task9.png />
-</div>
+</div> -->
 
 <details>
 <summary>Task 1: EC Number Prediction</summary>
