@@ -21,7 +21,7 @@ all_task_Llama-3.1-8B-Instruct:
       - OPI_DATA/KM/gSymbol2Cancer/test/gene_symbol_to_cancer_test.jsonl
       - OPI_DATA/KM/gSymbol2Tissue/test/gene_symbol_to_tissue_test.jsonl
 
-all_task_OPI_full_1.61M_v2:
+all_task_OPI_full_1.61M:
   model:
     name: LLM_checkpoints/OPI_IT/${model_name}_OPI_full_1.61M_train_e1
   data:

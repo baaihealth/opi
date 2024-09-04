@@ -8,6 +8,7 @@ declare -A model_paths=(
 
 ### Define an associative array (dictionary) mapping task names to their corresponding data paths
 declare -A data_paths=(
+    ["OPI_full_1.61M"]="/path/to/OPI_DATA/OPI_full_1.61M_train.json"
     ["EC_number"]="/path/to/OPI_DATA/SU/EC_number/train/CLEAN_EC_number_split_train.json"
     ["Fold_type"]="/path/to/OPI_DATA/SU/Fold_type/train/fold_type_train.json"
     ["Subcellular_localization"]="/path/to/OPI_DATA/SU/Subcellular_localization/train/subcell_loc_train.json"
@@ -17,22 +18,19 @@ declare -A data_paths=(
     ["gName2Cancer"]="/path/to/OPI_DATA/KM/gName2Cancer/train/gene_name_to_cancer_train.json"
     ["gSymbol2Cancer"]="/path/to/OPI_DATA/KM/gSymbol2Cancer/train/gene_symbol_to_cancer_train.json"
     ["gSymbol2Tissue"]="/path/to/OPI_DATA/KM/gSymbol2Tissue/train/gene_symbol_to_tissue_train.json"
-    ["OPI_full_1.61M_v2"]="/path/to/OPI_DATA/OPI_full_1.61M_train.json"
 )
 # Define the order of tasks
 ordered_tasks=(
-    "EC_number100"
+    "OPI_full_1.61M"
+    "EC_number"
     "Fold_type"
     "Subcellular_localization"
-    "Function"
-    "Go_terms"
     "Keywords"
-    "gName2Cancer"
-    "gSymbol2Cancer"
+    "Go_terms"
+    "Function"
     "gSymbol2Tissue"
-    "OPI_full_1.46M_v2"
-    "OPI_full_1.61M_v2"
-    "OPI_full_1.74M_v2"
+    "gSymbol2Cancer"
+    "gName2Cancer"
 )
 
 # Display model names and handle selection
@@ -65,7 +63,7 @@ select task_name in "${ordered_tasks[@]}"; do
 done
 
 # Set num_train_epochs based on the selected task
-if [[ "$task_name" == "OPI_full_1.46M_v2" || "$task_name" == "OPI_full_1.61M_v2" || "$task_name" == "OPI_full_1.74M_v2" ]]; then
+if [[ "$task_name" == "OPI_full_1.61M" ]]; then
     num_train_epochs=1
 else
     num_train_epochs=3
