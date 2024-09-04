@@ -1,11 +1,11 @@
 <div align="center">
-<img src=./OPI_logo.png />
+<img src=./demo_figures/OPI_logo.png />
 
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/LICENSE)
 [![Data License](https://img.shields.io/badge/Data%20License-CC%20By%20NC%204.0-red.svg)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/DATA_LICENSE)
 [![Weight Diff License](https://img.shields.io/badge/Weight%20Diff%20License-CC%20By%20NC%204.0-yellow)](https://github.com/tatsu-lab/stanford_alpaca/blob/main/WEIGHT_DIFF_LICENSE)
 
-# <center> OPI: Exploring and Benchmarking Large Language Models for Protein Modeling
+# <center> OPI: An Open Instruction Dataset for Adapting Large Language Models to Protein-Related Tasks
 
 </div>
 
@@ -13,27 +13,21 @@
 
 
 ## Overview
-This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a protein instruction dataset as well as propose to explore and benckmark LLMs for protein modeling in protein biology.
+This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a high-quality and comprehensive protein instruction dataset with which LLMs can be adapted to protein-related tasks via instruction tuning and evaluated on these tasks.
 <!-- ![Overview](./Overview.png) -->
 <div align="center">
-<img src=./Overview.png />
+<img src=./demo_figures/OPI_experiment_outline.png />
 </div>
 
 **Usage and License Notices:** [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
-## Dataset Update
-The previous version of OPI dataset is based on the **release 2022_01** of UniProtKB/Swiss-Prot protein knowledgebase. At current, OPI is updated to contain the latest **release 2023_05**, which can be accessed via the dataset file [OPI_updated_160k.json](https://huggingface.co/datasets/BAAI/OPI/blob/main/OPI_DATA/OPI_updated_160k.json) from Huggingface.
-
-Reference:
-- https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2022_01/knowledgebase/UniProtKB_SwissProt-relstat.html
-- https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2023_05/knowledgebase/UniProtKB_SwissProt-relstat.html
 
 ## OPI dataset construction pipeline
-The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplementary material of our [manuscript](https://openreview.net/forum?id=ecnshnvES6) which has been submitted to [NeurIPS 2023 Datasets and Benchmarks Track](https://nips.cc/Conferences/2023/CallForDatasetsBenchmarks). The following figure shows the general construction process.
+The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplementary material of our manuscript which has been submitted to Foundation Models for Science Workshop (NeurIPS 2024). The following figure shows the overall construction process of OPI.
 
 <!-- ![OPI construction](./OPI_data.png#pic_center) -->
 <div align="center">
-<img src=./OPI_data.png />
+<img src=./demo_figures/OPI_data.png />
 </div>
 
 
@@ -51,290 +45,200 @@ input:
 output: 
     2.7.10.2
 ```
-
-## OPI dataset release
-We release the first curated OPI dataset corresponding to the 9 evaluation tasks to facilitate further research in protein biology domain. We are warmly welcome further improvenmet or supplement to this dataset.
-
-**How to access the OPI dataset?** The OPI dataset can be accessed via this link [OPI_DATA](https://huggingface.co/datasets/BAAI/OPI) from HuggingFace.
-Once finished downloading the **OPI_DATA** dataset, please put the three subfolders, i.e., AP, KM and SU, into the **OPI_DATA** folder in this repo. 
-
-The **OPI dataset folder structure** is as follows:
+- **An example of OPI testing data:**
 ```
-./OPI_DATA/
-├── AP
-│   ├── Function
-│   │   ├── test
-│   │   │   ├── CASPSimilarSeq_function_test.jsonl
-│   │   │   ├── IDFilterSeq_function_test.jsonl
-│   │   │   └── UniProtSeq_function_test.jsonl
-│   │   └── train
-│   │       ├── function_description_train.json
-│   │       └── function_description_train_0.01.json
-│   ├── GO
-│   │   ├── test
-│   │   │   ├── CASPSimilarSeq_go_test.jsonl
-│   │   │   ├── IDFilterSeq_go_test.jsonl
-│   │   │   └── UniProtSeq_go_test.jsonl
-│   │   └── train
-│   │       ├── go_terms_train.json
-│   │       └── go_terms_train_0.01.json
-│   └── Keywords
-│       ├── test
-│       │   ├── CASPSimilarSeq_keywords_test.jsonl
-│       │   ├── IDFilterSeq_keywords_test.jsonl
-│       │   └── UniProtSeq_keywords_test.jsonl
-│       └── train
-│           ├── keywords_train.json
-│           └── keywords_train_0.01.json
-├── KM
-│   ├── gSymbol2Cancer
-│   │   ├── test
-│   │   │   └── gene_symbol_to_cancer_test.jsonl
-│   │   └── train
-│   │       └── gene_symbol_to_cancer_train.json
-│   ├── gName2Cancer
-│   │   ├── test
-│   │   │   └── gene_name_to_cancer_test.jsonl
-│   │   └── train
-│   │       └── gene_name_to_cancer_train.json
-│   └── gSymbol2Tissue
-│       ├── test
-│       │   └── gene_symbol_to_tissue_test.jsonl
-│       └── train
-│           └── gene_symbol_to_tissue_train.json
-└── SU
-    ├── EC_number
-    │   ├── test
-    │   │   ├── CLEAN_EC_number_new_test.jsonl
-    │   │   └── CLEAN_EC_number_price_test.jsonl
-    │   └── train
-    │       ├── CLEAN_EC_number_train.json
-    ├── Fold_type-Remote
-    │   ├── test
-    │   │   └── Remote_test.jsonl
-    │   └── train
-    │       └── Remote_train.json
-    └── Subcellular_location
-        ├── test
-        │   ├── location_test.jsonl
-        └── train
-            └── location_train.json
+{"id": "seed_task_0", "name": "EC number of price dataset from CLEAN", "instruction": "Return the EC number of the protein sequence.", "instances": [{"input": "MAIPPYPDFRSAAFLRQHLRATMAFYDPVATDASGGQFHFFLDDGTVYNTHTRHLVSATRFVVTHAMLYRTTGEARYQVGMRHALEFLRTAFLDPATGGYAWLIDWQDGRATVQDTTRHCYGMAFVMLAYARAYEAGVPEARVWLAEAFDTAEQHFWQPAAGLYADEASPDWQLTSYRGQNANMHACEAMISAFRATGERRYIERAEQLAQGICQRQAALSDRTHAPAAEGWVWEHFHADWSVDWDYNRHDRSNIFRPWGYQVGHQTEWAKLLLQLDALLPADWHLPCAQRLFDTAVERGWDAEHGGLYYGMAPDGSICDDGKYHWVQAESMAAAAVLAVRTGDARYWQWYDRIWAYCWAHFVDHEHGAWFRILHRDNRNTTREKSNAGKVDYHNMGACYDVLLWALDAPGFSKESRSAALGRP", "output": "5.3.1.7"}], "is_classification": false}
 ```
 
-The **OPI_DATA** folder contains 9 protein tasks seperately. If you want to merge all or several 'train.json' files of the nine tasks into one single file, please do like this:
+## OPI Dataset Overview 
+We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adatpting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
+
+**Accessing the OPI Dataset:**
+The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a seubset for each specific task as well as the full dataset file: [OPI-full-1.61M_v2_train.json](./OPI_DATA/OPI_full_1.61M_v2_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
 ```
 cd OPI_DATA
-python merge_nine_opi_tasks_train.py --output OPI_merged.json
-```
-You can access the whole dataset file [OPI_full_1.46M.json](https://huggingface.co/datasets/BAAI/OPI) from HuggingFace, which contains 1.46 million examples.
-
-## OPI-instruction tuning from original Galactica-6.7B model and LLaMA-7B model
-For OPI-instruction tuning, we adopt the training script of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
-
-### 1. Galactica instruction-tuning with OPI
-
-[Example: train_keywords.sh](./train_galai/train_keywords.sh)
-```
-#!/bin/bash
-
-OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_galai/train.py \
-    --model_name_or_path path/to/galactica_base_model/galactica-$3 \
-    --data_path  ./OPI_DATA/AP/Keywords/train/keywords_train.json \
-    --bf16 True \
-    --output_dir path/to/output/galai_ft_opi/galai_ft_keywords_$3_e$4 \
-    --num_train_epochs $4 \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 8 \
-    --evaluation_strategy "no" \
-    --save_strategy "steps" \
-    --save_steps 2000 \
-    --save_total_limit 1 \
-    --learning_rate 2e-5 \
-    --weight_decay 0. \
-    --warmup_ratio 0.03 \
-    --deepspeed "./configs/default_offload_opt_param.json" \
-    --tf32 True
+python merge_task_train_data.py --output OPI_merged_train.json
 ```
 
-In the Shell above, you can setup your onw local LLM weights path or Huggingface model entry (e.g., *facebook/galactica-6.7b*) to ```model_name_or_path```  and you onw training results saving path to ```output_dir```.
-
-To start training, please do like this:
+**OPI Dataset Folder Structure:**
 ```
-bash train_galai/train_keywords.sh 1 0 6.7b 3 
-```
-
-Explanation of such bash arguments:
-```
-1: nnodes \
-0: node_rank \
-6.7b: model size of Galactica \
-3: total training epochs
-```
-
-### 2. LLaMA instruction-tuning with OPI
-
-[Example: train_EC_number.sh](./train_llama/train_EC_number.sh)
-```
-#!/bin/bash
-
-OMP_NUM_THREADS=1 torchrun --nnodes=$1 --node_rank=$2 --nproc_per_node=3 train_llama/train.py \
-    --model_name_or_path path/to/llama_base_model/hf_version/llama-$3 \
-    --data_path  ./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_train.json \
-    --bf16 True \
-    --output_dir path/to/output/llama_ft_CLEAN_EC_number_$3_e$4 \
-    --num_train_epochs $4 \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 16 \
-    --evaluation_strategy "no" \
-    --save_strategy "steps" \
-    --save_steps 2000 \
-    --save_total_limit 1 \
-    --learning_rate 2e-5 \
-    --weight_decay 0. \
-    --warmup_ratio 0.03 \
-    --deepspeed "./configs/default_offload_opt_param.json" \
-    --tf32 True
-```
-In the Shell above, you can setup your onw local LLM weights path or Huggingface model entry (e.g., *decapoda-research/llama-7b-hf*) to ```model_name_or_path```  and you onw training results saving path to ```output_dir```.
-To start training, please do like this:
-```
-bash train_llama/train_EC_number.sh 1 0 7b 3 
-```
-
-Explanation of such bash arguments:
-```
-1: nnodes \
-0: node_rank \
-7b: model size of LLaMA \
-3: total training epochs
-```
-
-**Note**: As for the training, we take the suggestion to address out-of-memory issue from [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca), using DeepSpeed ZeRO stage-3 with offload.
-
-### 3. Convert DeepSpeed-format weights
-Once finished instruction tuning, the DeepSpeed-format weights should be converted to **pytorch_model.bin**, using the following script:
-```
-cd output_dir
-python zero_to_fp32.py . pytorch_model.bin
+./OPI_DATA/
+└── SU
+│   ├── EC_number
+│   │   ├── test
+│   │   │   ├── CLEAN_EC_number_new_test.jsonl
+│   │   │   └── CLEAN_EC_number_price_test.jsonl
+│   │   └── train
+│   │       ├── CLEAN_EC_number_split_train.json
+│   ├── Fold_type
+│   │   ├── test
+│   │   │   └── fold_type_test.jsonl
+│   │   └── train
+│   │       └── fold_type_train.json
+│   └── Subcellular_localization
+│       ├── test
+│       │   ├── subcell_loc_test.jsonl
+│       └── train
+            └── subcell_loc_train.json
+├── AP
+│   └── Keywords
+│   │   ├── test
+│   │   │   ├── CASPSimilarSeq_keywords_test.jsonl
+│   │   │   ├── IDFilterSeq_keywords_test.jsonl
+│   │   │   └── UniProtSeq_keywords_test.jsonl
+│   │   └── train
+│   │       ├── keywords_train.json
+│   ├── GO
+│   │   ├── test
+│   │   │   ├── CASPSimilarSeq_go_terms_test.jsonl
+│   │   │   ├── IDFilterSeq_go_terms_test.jsonl
+│   │   │   └── UniProtSeq_go_terms_test.jsonl
+│   │   └── train
+│   │       ├── go_terms_train.json
+│   ├── Function
+│       ├── test
+│       │   ├── CASPSimilarSeq_function_test.jsonl
+│       │   ├── IDFilterSeq_function_test.jsonl
+│       │   └── UniProtSeq_function_test.jsonl
+│       └── train
+│           ├── function_train.json
+├── KM
+    └── gSymbol2Tissue
+    │   ├── test
+    │   │   └── gene_symbol_to_tissue_test.jsonl
+    │   └── train
+    │       └── gene_symbol_to_tissue_train.json
+    ├── gSymbol2Cancer
+    │   ├── test
+    │   │   └── gene_symbol_to_cancer_test.jsonl
+    │   └── train
+    │       └── gene_symbol_to_cancer_train.json
+    ├── gName2Cancer
+        ├── test
+        │   └── gene_name_to_cancer_test.jsonl
+        └── train
+            └── gene_name_to_cancer_train.json
 ```
 
-### 4. How to access OPI-instruction-tuned Galactica-6.7B model?
-In this repo, we release the OPI_full_Galactica-6.7B model which is fine-funed on OPI full dataset, which can be accessed from [HuggingFace](https://huggingface.co/BAAI/OPI_full_Galactica-6.7B). Please feel free to contact us if there is any question.
 
-## OPEval: Nine Evaluation tasks
+## OPEval: Nine Evaluation Tasks Using the OPI Dataset
 
-For benchamarking, we design OPEval consisting of 3 types of evaluation tasks, each of which contains 3 specific ones, as shown in the following table.
+To assess the effectiveness of instruction tuning with the OPI dataset, we developed OPEval, which comprises three categories of evaluation tasks. Each category includes three specific tasks. The table below outlines the task types, names, and the corresponding sizes of the training and testing sets.
 
-|       Task Type        | Abbreviation |                  Task Name                  |
-| :--------------------: | :----------: | :-----------------------------------------: |
-| Sequence Understanding |      SU      |            EC Number Prediction             |
-| Sequence Understanding |      SU      |            Fold Type Prediction             |
-| Sequence Understanding |      SU      |     Subcellular Localization Prediction     |
-| Annotation Prediction  |      AP      |        Function Keywords Prediction         |
-| Annotation Prediction  |      AP      |     Gene Ontology(GO) Terms Prediction      |
-| Annotation Prediction  |      AP      |       Function Description Prediction       |
-|    Knowledge Mining    |      KM      | Tissue Location Prediction from Gene Symbol |
-|    Knowledge Mining    |      KM      |     Cancer Prediction from Gene Symbol      |
-|    Knowledge Mining    |      KM      |      Cancer Prediction from Gene Name       |
+<table border="1" style="text-align:center; border-collapse:collapse;">
+  <tr>
+    <th style="text-align:center;">Task Type</th>
+    <th style="text-align:center;">Type Abbr.</th>
+    <th style="text-align:center;">Task Name</th>
+    <th style="text-align:center;">Task Abbr.</th>
+    <th style="text-align:center;">Training set size</th>
+    <th style="text-align:center;">Testing set size</th>
+  </tr>
+  <tr>
+    <td rowspan="3">Sequence Understanding</td>
+    <td rowspan="3">SU</td>
+    <td>EC Number Prediction</td>
+    <td>EC_number</td>
+    <td style="text-align:center;">74,487</td>
+    <td style="text-align:center;">392 (NEW-392), 149 (Price-149)</td>
+  </tr>
+  <tr>
+    <td>Fold Type Prediction</td>
+    <td>Fold_type</td>
+    <td style="text-align:center;">12,312</td>
+    <td style="text-align:center;">718 (Fold), 1254 (Superfamily), 1272 (Family)</td>
+  </tr>
+  <tr>
+    <td>Subcellular Localization Prediction</td>
+    <td>Subcellular_localization</td>
+    <td style="text-align:center;">11,230</td>
+    <td style="text-align:center;">2,772</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Annotation Prediction</td>
+    <td rowspan="3">AP</td>
+    <td>Function Keywords Prediction</td>
+    <td>Keywords</td>
+    <td style="text-align:center;">451,618</td>
+    <td style="text-align:center;">184 (CASPSimilarSeq), 1,112 (IDFilterSeq), 4562 (UniprotSeq)</td>
+  </tr>
+  <tr>
+    <td>Gene Ontology(GO) Terms Prediction</td>
+    <td>GO</td>
+    <td style="text-align:center;">451,618</td>
+    <td style="text-align:center;">184 (CASPSimilarSeq), 1,112 (IDFilterSeq), 4562 (UniprotSeq)</td>
+  </tr>
+  <tr>
+    <td>Function Description Prediction</td>
+    <td>Function</td>
+    <td style="text-align:center;">451,618</td>
+    <td style="text-align:center;">184 (CASPSimilarSeq), 1,112 (IDFilterSeq), 4562 (UniprotSeq)</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Knowledge Mining</td>
+    <td rowspan="3">KM</td>
+    <td>Tissue Location Prediction from Gene Symbol</td>
+    <td>gSymbol2Tissue</td>
+    <td style="text-align:center;">8,723</td>
+    <td style="text-align:center;">2,181</td>
+  </tr>
+  <tr>
+    <td>Cancer Prediction from Gene Symbol</td>
+    <td>gSymbol2Cancer</td>
+    <td style="text-align:center;">590</td>
+    <td style="text-align:center;">148</td>
+  </tr>
+  <tr>
+    <td>Cancer Prediction from Gene Name</td>
+    <td>gName2Cancer</td>
+    <td style="text-align:center;">590</td>
+    <td style="text-align:center;">148</td>
+  </tr>
+</table>
 
-## Evaluating various models with OPI data
-### 1. Environment setup
-```
-pip install -r requirements.txt
-```
 
-As for the evaluation, we refer to the inference script from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
+## Instruction tuning with OPI training data
+Instruction tuning procedures are available in the [instruction_tuning](./instruction_tuning.md) guide.
 
-### 2. Evaluation of Galactica
-We evaluate OPI-instruction-tuned Galactica-6.7B model and origional Galactica-6.7B model.
+**Accessing the OPI-Tuned Models:**
+We have released the OPI-full-1.61M-Galactica-6.7B and OPI-full-1.61M-Llama-3.1-8B-Instruct models fine-tuned on the complete OPI dataset. You can access it on [Hugging Face](...).
 
-**For OPI-instruction-tuned Galactica-6.7B model, please use the following script:**
-```
-cd eval_galai
-python eval_galai.py --model_idx OPI-instruction-tuned-model-name --output_dir ./eval_galai_output --gpus=0
-```
-In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_galai.py](eval_galai/eval_galai.py#L74). ```output_dir```is where you save the evaluation results. 
+## Evaluating with OPI testing data
+Evalution procedures are outlined in the [evaluation](./evaluation.md) guide.
 
-**For the original Galactica-6.7B model, please use the following script:**
-```
-cd eval_galai/infer_with_original_galai
-bash galactica_infer.sh
-```
+## Evaluation results
+Comprehensive evaluation results are detailed in th [evaluation_results](./evaluation_results.md) document.
 
-### 3. Evaluation of Alpaca
-For comparison, we evaluate Alpaca-7B model and [Galpaca-6.7B](https://huggingface.co/GeorgiaTechResearchInstitute/galpaca-6.7b) model. The Galpaca-6.7B model is contributed by Georgia Tech Research Institute on HuggingFace.
 
-As for Alpaca-7B model, we first get [alpaca-7b-wdiff](https://huggingface.co/tatsu-lab/alpaca-7b-wdiff) from HuggingFace, which is the weight diff for [Stanford Alpaca-7B](https://github.com/tatsu-lab/stanford_alpaca/), then recover the original Alpaca-7B weights using the conversion script provided by [tatsu-lab/stanford_alpaca](https://github.com/tatsu-lab/stanford_alpaca).
 
-The same script is used for evaluating Alpaca-7B and Galpaca-6.7B model, just by setting a different model_idx for a different model.
-```
-cd eval_alpaca
-python eval_alpaca.py --model_idx alpaca-7b-recover --output_dir ./eval_alpaca_output --gpus=0 #original Alpaca-7B weights
-```
-In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_alpaca.py](eval_alpaca/eval_alpaca.py#L81). ```output_dir```is where you save the evaluation results. 
-
-### 4. Evaluation of LLaMA
-For comparison, we evaluate OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model.
-
-The same script is used for evaluating OPI-instruction-tuned LLaMA-7B model and original LLaMA-7B model, just by setting a different model_idx for a different model.
-```
-cd eval_llama
-python eval_llama.py --model_idx llama_7b_hf --output_dir ./eval_llama_output --gpus=0  #original LLaMA-7B weights
-```
-In the commands above, ```model_idx```is the model index you can allocate to your local LLM weights for you to easily access a LLM model when inferencing, which you can set it up in the [model_dict](eval_galai/eval_galai.py#L74) in [eval_llama.py](eval_llama/eval_llama.py#L83). ```output_dir```is where you save the evaluation results. 
-
-### 5. The following table shows evaluation results of OPI_full_Galactica-6.7B model on 9 tasks.
-| Task Type              | Task Name                                   | Testing file                  | Accuracy | Precision | Recall |  F1   | Rouge-L |
-| ---------------------- | ------------------------------------------- | ----------------------------- | :------: | :-------: | :----: | :---: | :-----: |
-| Sequence Understanding | EC Number Prediction                        | CLEAN_EC_number_new_test      |    -     |   0.181   | 0.174  | 0.176 |    -    |
-| Sequence Understanding | EC Number Prediction                        | CLEAN_EC_number_price_test    |    -     |   0.054   | 0.054  | 0.054 |    -    |
-| Sequence Understanding | Fold Type Prediction                        | Remote_test_fold             |  0.068   |     -     |   -    |   -   |    -    |
-| Sequence Understanding | Fold Type Prediction                        | Remote_test_superfamily      |  0.090   |     -     |   -    |   -   |    -    |
-| Sequence Understanding | Fold Type Prediction                        | Remote_test_family           |  0.416   |     -     |   -    |   -   |    -    |
-| Sequence Understanding | Subcellular Localization Prediction         | location_test                |  0.678   |     -     |   -    |   -   |    -    |
-| Annotation Prediction  | Function Keywords Prediction                | CASPSimilarSeq_keywords_test |    -     |   0.716   | 0.669  | 0.674 |    -    |
-| Annotation Prediction  | Function Keywords Prediction                | IDFilterSeq_keywords_test    |    -     |   0.822   | 0.771  | 0.778 |    -    |
-| Annotation Prediction  | Function Keywords Prediction                | UniProtSeq_keywords_test     |    -     |   0.871   | 0.802  | 0.820 |    -    |
-| Annotation Prediction  | Gene Ontology(GO) Terms Prediction          | CASPSimilarSeq_go_test       |    -     |   0.710   | 0.627  | 0.647 |    -    |
-| Annotation Prediction  | Gene Ontology(GO) Terms Prediction          | IDFilterSeq_go_test          |    -     |   0.724   | 0.637  | 0.656 |    -    |
-| Annotation Prediction  | Gene Ontology(GO) Terms Prediction          | UniProtSeq_go_test           |    -     |   0.759   | 0.683  | 0.698 |    -    |
-| Annotation Prediction  | Function Description Prediction             | CASPSimilarSeq_function_test |    -     |     -     |   -    |   -   |  0.431  |
-| Annotation Prediction  | Function Description Prediction             | IDFilterSeq_function_test    |    -     |     -     |   -    |   -   |  0.624  |
-| Annotation Prediction  | Function Description Prediction             | UniProtSeq_function_test     |    -     |     -     |   -    |   -   |  0.696  |
-| Knowledge Mining       | Tissue Location Prediction from Gene Symbol | gene_symbol_to_tissue_test   |    -     |   0.377   | 0.779  | 0.468 |    -    |
-| Knowledge Mining       | Cancer Prediction from Gene Symbol          | gene_symbol_to_cancer_test    |    -     |   0.554   | 0.433  | 0.465 |    -    |
-| Knowledge Mining       | Cancer Prediction from Gene Name            | gene_name_to_cancer_test      |    -     |   0.507   | 0.400  | 0.429 |    -    |
-
-## Prediction by OPI_full_Galactica-6.7B/GPT-4/GPT-4-32k/GPT-3.5/LLaMA-2-13B-chat/Claude-2 v.s. Target
+## Prediction Comparison: OPI-tuned model, GPT-4o, Llama-3.1-8B-Instruct, Claude 3.5 Sonnet vs. Ground Trurh Answers
 
 <div align="center">
-<img src=model_comparison/Task1.png />
+<img src=demo_figures/Task1.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task2.png />
+<img src=demo_figures/Task2.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task3.png />
+<img src=demo_figures/Task3.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task4.png />
+<img src=demo_figures/Task4.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task5.png />
+<img src=demo_figures/Task5.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task6.png />
+<img src=demo_figures/Task6.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task7.png />
+<img src=demo_figures/Task7.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task8.png />
+<img src=demo_figures/Task8.png />
 </div>
 <div align="center">
-<img src=model_comparison/Task9.png />
+<img src=demo_figures/Task9.png />
 </div>
 
 <details>
@@ -612,20 +516,8 @@ Claude-2's result:
 ## Demo
 We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually demonstrate the ability of OPI_full_Galactica-6.7B model on various evaluation tasks.
 
-![OPI Demo](./OPI_demo.gif)
+![OPI Demo](./demo_figures/OPI_demo.gif)
 
-## Citation
-If you find OPI helpful to your research, please consider starring and citing this repo. Thank you for your support!
-```
-@unpublished{Lin_OPI_Exploring_and_2023,
-author = {Lin, Wenjun and Wang, Hui and Xiao, Hongwang and Ye, Qiwei},
-title = {{OPI: Exploring and Benchmarking Large Language Models for Protein Modeling}},
-url = {https://github.com/baaihealth/opi},
-year = {2023}
-}
-```
-
-## Contact Information
-For help or issues using the repos, please submit a GitHub issue.
-
-For other communications, please contact Qiwei Ye (qwye@baai.ac.cn).
+## Acknowledgement
+The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
+Some codes are adapted from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
