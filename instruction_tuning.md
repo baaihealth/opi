@@ -19,7 +19,7 @@ Enter a model number to select a MODEL NAME:
 #? 1
 
 MODEL NAME selected: Llama3.1-8B-Instruct
-MODEL PATH: /share/project/xiaohongwang/LLM_checkpoints/Llama3.1/Llama-3.1-8B-Instruct
+MODEL PATH: /path/to/LLM_checkpoints/Llama3.1/Llama-3.1-8B-Instruct
 
 Enter a task number to select a TASK NAME:
 1) EC_number100                3) Subcellular_localization   5) Go_terms                   7) gName2Cancer               9) gSymbol2Tissue            11) OPI_full_1.61M_v2
@@ -27,8 +27,8 @@ Enter a task number to select a TASK NAME:
 #? 3
 
 TASK NAME selected: Subcellular_localization
-DATA PATH: /share/project/xiaohongwang/OPI_DATAv1/SU/Subcellular_localization/train/subcell_loc_train.json
+DATA PATH: /path/to/OPI_DATA/SU/Subcellular_localization/train/subcell_loc_train.json
 
 EPOCHS: 3
-OUTPUT_DIR: /share/project/xiaohongwang/LLM_checkpoints/OPI_IT/Llama3.1-8B-Instruct_subcell_loc_train_e3
+OUTPUT_DIR: /path/to/LLM_checkpoints/OPI_IT/Llama3.1-8B-Instruct_subcell_loc_train_e3
 ```
