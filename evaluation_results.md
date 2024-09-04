@@ -348,7 +348,7 @@ Each testing result is derived from the model that has been fine-tuned using the
   </tbody>
 </table>
 
-## 3. Evaluation of Llama-3.1-8B-Instruct_OPI_full_1.61M_v2_train_e1 model on 9 tasks (whole). 
+## 3. Evaluation of Llama-3.1-8B-Instruct_OPI_full_1.61M_train_e1 model on 9 tasks (whole). 
 Each testing result is derived from the model that has been fine-tuned using the complete OPI dataset (i.e.,[OPI_full_1.61M.json](https://huggingface.co/datasets/BAAI/OPI)) and subsequently evaluated on the respective testing set for each specific task.
 <table border="1" style="text-align:center; border-collapse:collapse; width: 100%;">
   <thead>
@@ -892,7 +892,7 @@ Each testing result is derived from the model that has been fine-tuned using the
   </tbody>
 </table>
 
-## 6. Evaluation of Galactica-6.7B-OPI_full_1.61M_v2_train_e1 model on 9 tasks (whole). 
+## 6. Evaluation of Galactica-6.7B-OPI_full_1.61M_train_e1 model on 9 tasks (whole). 
 Each testing result is derived from the model that has been fine-tuned using the complete OPI dataset (i.e.,[OPI_full_1.61M.json](https://huggingface.co/datasets/BAAI/OPI)) and subsequently evaluated on the respective testing set for each specific task.
 
 <table border="1" style="text-align:center; border-collapse:collapse; width: 100%;">
