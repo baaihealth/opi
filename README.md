@@ -219,3 +219,7 @@ The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanfo
 Some codes are adapted from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).  
 Llama-3: [Llama-3](https://github.com/meta-llama/llama3)  
 Galactica: [Galactica](https://github.com/paperswithcode/galai)  
+
+## Contact Information
+For help or issues using the repos, please submit a GitHub issue.  
+For other communications, please contact Qiwei Ye (qwye@baai.ac.cn).
