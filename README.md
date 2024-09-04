@@ -19,7 +19,7 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 <img src=./demo_figures/OPI_experiment_outline.png />
 </div>
 
-**Usage and License Notices:** [LLaMA](https://github.com/facebookresearch/llama) and [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
+**Usage and License Notices:** [Galactica](https://github.com/paperswithcode/galai) are intended and licensed for research use only. [LLaMA-3](https://github.com/meta-llama/llama3) is licensed for researchers and commercial entities, upholding the principles of openness. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes. The weight diff for [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) is also CC BY NC 4.0 (allowing only non-commercial use).
 
 
 ## OPI dataset construction pipeline
@@ -521,3 +521,5 @@ We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually d
 ## Acknowledgement
 The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 
 Some codes are adapted from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).
+LLaMA-3: [LLaMA-3](https://github.com/meta-llama/llama3) 
+Galactica: [Galactica](https://github.com/paperswithcode/galai)
