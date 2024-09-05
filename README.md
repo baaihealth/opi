@@ -61,7 +61,7 @@ output:
 We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adapting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
 
 **Accessing the OPI dataset:**
-The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a subset for each specific task as well as the full dataset file: [OPI_full_1.61M_train.json](./OPI_DATA/OPI_full_1.61M_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
+The [complete OPI dataset](https://huggingface.co/datasets/BAAI/OPI/tree/main/OPI_DATA) can be accessed from Hugging Face, which is organized into the three subfolders—AP, KM, and SU— in the OPI_DATA directory, plusing the full dataset file OPI_full_1.61M_train.json. Once downloaded, you can place all the subfolders and data files in the [OPI_DATA](./OPI_DATA/) folder within the repository. If you want to merge all or several training data files of the tasks into one single training data file, please do like this:
 ```
 cd OPI_DATA
 python merge_task_train_data.py --output OPI_merged_train.json
@@ -208,7 +208,7 @@ To assess the effectiveness of instruction tuning with the OPI dataset, we devel
 Instruction tuning procedures are available in the [instruction_tuning](./instruction_tuning.md) guide.
 
 **Accessing the OPI-Tuned Models:**
-We have released the OPI-full-1.61M-Galactica-6.7B and OPI-full-1.61M-Llama-3.1-8B-Instruct models fine-tuned on the complete OPI dataset. You can access it on [Hugging Face](...).
+We have released the [OPI-full-1.61M-Galactica-6.7B](...) and [OPI-full-1.61M-Llama-3.1-8B-Instruct](...) models fine-tuned on the complete OPI dataset, which can be accessed from Hugging Face.
 
 ## Evaluating with OPI testing data
 Evalution procedures are outlined in the [evaluation](./evaluation.md) guide.
