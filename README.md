@@ -9,8 +9,19 @@
 
 </div>
 
-**VISION & ROADMAP.** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
+**Vision** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
 
+- [x] [Project Overview](#project-overview)
+- [x] [OPI dataset construction pipeline](#opi-dataset-construction-pipeline)
+- [x] [OPI dataset overview](#opi-dataset-overview)
+- [x] [OPEval: Nine evaluation tasks using the OPI dataset](#opeval-nine-evaluation-tasks-using-the-opi-dataset)
+- [x] [Instruction tuning with OPI training data](#instruction-tuning-with-opi-training-data)
+- [x] [Evaluating with OPI testing data](#evaluating-with-opi-testing-data)
+- [x] [Evaluation results](#evaluation-results)
+- [x] [Prediction comparison with SOTA mdoels](#prediction-comparison-with-sota-mdoels)
+- [x] [Demo](#demo)
+- [x] [Acknowledgement](#acknowledgement)
+- [x] [Contact Information](#contact-information)
 
 ## Project Overview
 This repo is for the **Open Protein Instructions (OPI)** project, aiming to build and release a high-quality and comprehensive protein instruction dataset with which LLMs can be adapted to protein-related tasks via instruction tuning and evaluated on these tasks.
@@ -203,7 +214,6 @@ Evalution procedures are outlined in the [evaluation](./evaluation.md) guide.
 
 ## Evaluation results
 Comprehensive evaluation results are detailed in th [evaluation_results](./evaluation_results.md) document.
-
 
 ## Prediction comparison with SOTA mdoels
 
