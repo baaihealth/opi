@@ -11,6 +11,7 @@
 
 **Vision** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
 
+## Contents
 - [x] [Project Overview](#project-overview)
 - [x] [OPI dataset construction pipeline](#opi-dataset-construction-pipeline)
 - [x] [OPI dataset overview](#opi-dataset-overview)
