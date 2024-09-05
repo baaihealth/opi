@@ -58,7 +58,7 @@ output:
 ```
 
 ## OPI dataset overview 
-We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adatpting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
+We are excited to announce the release of the OPI dataset, a curated collection of instructions covering 9 tasks for adapting LLMs to protein biology. The dataset is designed to advance LLM-driven research in the field of protein biology. We welcome contributions and enhancements to this dataset from the community.
 
 **Accessing the OPI dataset:**
 The OPI dataset is organized into the three subfolders—AP, KM, and SU—by in the [OPI_DATA](./OPI_DATA/) directory within this repository, where you can find a seubset for each specific task as well as the full dataset file: [OPI_full_1.61M_train.json](./OPI_DATA/OPI_full_1.61M_train.json). f you want to merge all or several training data files of the tasks into one single training data file, please do like this:
