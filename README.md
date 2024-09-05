@@ -33,7 +33,7 @@ This repo is for the **Open Protein Instructions (OPI)** project, aiming to buil
 
 
 ## OPI dataset construction pipeline
-The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The detailed construction pipeline is depicted in the supplementary material of our manuscript which has been submitted to Foundation Models for Science Workshop (NeurIPS 2024). The following figure shows the overall construction process of OPI.
+The OPI dataset is curated on our own by extracting key information from [Swiss-Prot](https://www.uniprot.org/uniprotkb?facets=reviewed%3Atrue&query=%2A) database. The following figure shows the overall construction process of OPI.
 
 <div align="center"><img src=./demo_figures/OPI_data.png /></div>
 
