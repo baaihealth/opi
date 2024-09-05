@@ -13,7 +13,7 @@ def main():
     args = parser.parse_args()
     
     file_list = [
-        "./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_split_train.json",
+        "./OPI_DATA/SU/EC_number/train/CLEAN_EC_number_train.json",
         "./OPI_DATA/SU/Fold_type/train/fold_type_train.json",
         "./OPI_DATA/SU/Subcellular_localization/train/subcell_loc_train.json",
      

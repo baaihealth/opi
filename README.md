@@ -76,7 +76,7 @@ python merge_task_train_data.py --output OPI_merged_train.json
 │   │   │   ├── CLEAN_EC_number_new_test.jsonl
 │   │   │   └── CLEAN_EC_number_price_test.jsonl
 │   │   └── train
-│   │       ├── CLEAN_EC_number_split_train.json
+│   │       ├── CLEAN_EC_number_train.json
 │   ├── Fold_type
 │   │   ├── test
 │   │   │   └── fold_type_test.jsonl

@@ -9,7 +9,7 @@ declare -A model_paths=(
 ### Define an associative array (dictionary) mapping task names to their corresponding data paths
 declare -A data_paths=(
     ["OPI_full_1.61M"]="/path/to/OPI_DATA/OPI_full_1.61M_train.json"
-    ["EC_number"]="/path/to/OPI_DATA/SU/EC_number/train/CLEAN_EC_number_split_train.json"
+    ["EC_number"]="/path/to/OPI_DATA/SU/EC_number/train/CLEAN_EC_number_train.json"
     ["Fold_type"]="/path/to/OPI_DATA/SU/Fold_type/train/fold_type_train.json"
     ["Subcellular_localization"]="/path/to/OPI_DATA/SU/Subcellular_localization/train/subcell_loc_train.json"
     ["Function"]="/path/to/OPI_DATA/AP/Function/train/function_train.json"
