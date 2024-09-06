@@ -227,7 +227,7 @@ Comprehensive evaluation results are detailed in th [evaluation_results](./evalu
 Prediction by OPI-tuned model, GPT-4o, Llama-3.1-8B-Instruct, Claude 3.5 Sonnet vs. Ground Trurh Answers are shown in in the [model_compare](./model_compare.md) document.
 
 ## Demo
-We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually demonstrate the ability of OPI_full_Galactica-6.7B model on various evaluation tasks.
+We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually demonstrate the ability of [OPI-Galactica-6.7B](https://huggingface.co/BAAI/OPI-Galactica-6.7B) model on various evaluation tasks.
 
 ![OPI Demo](./demo_figures/OPI_demo.gif)
 
