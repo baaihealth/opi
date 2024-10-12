@@ -11,6 +11,11 @@
 
 **Vision** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
 
+## Hugging Face links to OPI dataset and OPI-tuned models
+[OPI Dataset](https://huggingface.co/datasets/BAAI/OPI/tree/main)
+[OPI-Llama-3.1-8B-Instruct](https://huggingface.co/BAAI/OPI-Llama-3.1-8B-Instruct)
+[OPI-Galactica-6.7B](https://huggingface.co/BAAI/OPI-Galactica-6.7B)
+
 ## Contents
 - [x] [Project Overview](#project-overview)
 - [x] [OPI dataset construction pipeline](#opi-dataset-construction-pipeline)
@@ -214,7 +219,7 @@ To assess the effectiveness of instruction tuning with the OPI dataset, we devel
 Instruction tuning procedures are available in the [instruction_tuning](./instruction_tuning.md) guide.
 
 **Accessing the OPI-Tuned Models:**
-We have released the [OPI-full-1.61M-Galactica-6.7B](...) and [OPI-full-1.61M-Llama-3.1-8B-Instruct](...) models fine-tuned on the complete OPI dataset, which can be accessed from Hugging Face.
+We have released the [OPI-Llama-3.1-8B-Instruct](https://huggingface.co/BAAI/OPI-Llama-3.1-8B-Instruct) and [OPI-Galactica-6.7B](https://huggingface.co/BAAI/OPI-Galactica-6.7B) models fine-tuned using [OPI_full_1.61M_train.json](https://huggingface.co/datasets/BAAI/OPI/blob/main/OPI_DATA/OPI_full_1.61M_train.json), which can be accessed from Hugging Face.
 
 ## Evaluating with OPI testing data
 Evalution procedures are outlined in the [evaluation](./evaluation.md) guide.
