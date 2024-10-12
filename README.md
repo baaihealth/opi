@@ -12,7 +12,7 @@
 **Vision** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
 
 ## Hugging Face links to OPI dataset and OPI-tuned models
-[OPI Dataset](https://huggingface.co/datasets/BAAI/OPI/tree/main)  
+[OPI Dataset](https://huggingface.co/datasets/BAAI/OPI)  
 [OPI-Llama-3.1-8B-Instruct](https://huggingface.co/BAAI/OPI-Llama-3.1-8B-Instruct)  
 [OPI-Galactica-6.7B](https://huggingface.co/BAAI/OPI-Galactica-6.7B)  
 
