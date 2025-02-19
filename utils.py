@@ -1,6 +1,7 @@
 import os
 import io
 import json
+from loguru import logger
 
 def _make_w_io_base(f, mode: str):
     if not isinstance(f, io.IOBase):
@@ -43,3 +44,8 @@ def jload(f, mode="r"):
     jdict = json.load(f)
     f.close()
     return jdict
+
+local_rank = int(os.getenv("LOCAL_RANK", "0"))
+def rank0_log(*args):
+    if local_rank == 0:
+        logger.info(*args)
