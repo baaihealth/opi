@@ -12,7 +12,8 @@
 **Vision** *Open Protein Instructions(OPI) is the initial part of Open Biology Instructions(OBI) project, together with the subsequent Open Molecule Instructions(OMI), Open DNA Instructions(ODI), Open RNA Instructions(ORI) and Open Single-cell Instructions (OSCI). OBI is a project which aims to fully leverage the potential ability of Large Language Models(LLMs), especially the scientific LLMs like Galactica, to facilitate research in AI for Life Science community. While OBI is still in an early stage, we hope to provide a starting point for the community to bridge LLMs and biological domain knowledge.*
 
 ## Paper
-  [This work](https://neurips.cc/virtual/2024/105921) has been accepted by [NeurIPS 2024 Workshop: Foundation Models for Science: Progress, Opportunities, and Challenges](https://neurips.cc/virtual/2024/workshop/84714).
+  [OPI: An Open Instruction Dataset for Adapting Large Language Models to Protein-Related Tasks](https://neurips.cc/virtual/2024/105921) has been accepted by [NeurIPS 2024 Workshop: Foundation Models for Science: Progress, Opportunities, and Challenges](https://neurips.cc/virtual/2024/workshop/84714).
+
 
 ## Hugging Face links to OPI dataset and OPI-tuned models
 [OPI Dataset](https://huggingface.co/datasets/BAAI/OPI)  
