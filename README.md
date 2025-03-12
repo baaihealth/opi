@@ -152,7 +152,7 @@ To assess the effectiveness of instruction tuning with the OPI dataset, we devel
     <td rowspan="3">SU</td>
     <td>EC Number Prediction</td>
     <td>EC_number</td>
-    <td style="text-align:center;">74,487</td>
+    <td style="text-align:center;">227,362</td>
     <td style="text-align:center;">392 (NEW-392), 149 (Price-149)</td>
   </tr>
   <tr>
