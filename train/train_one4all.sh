@@ -2,6 +2,8 @@
 
 ### Define an associative array (dictionary) mapping model names to their corresponding model paths
 declare -A model_paths=(
+    ["DeepSeek-R1-Distill-Qwen-14B"]="/path/to/LLM_checkpoints/deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
+    ["DeepSeek-R1-Distill-Llama-8B"]="/path/to/LLM_checkpoints/deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
     ["Llama-3.1-8B-Instruct"]="/path/to/LLM_checkpoints/Llama3.1/Llama-3.1-8B-Instruct"
     ["Galactica-6.7B"]="/path/to/LLM_checkpoints/Galactica/Galactica-6.7B"
 )
@@ -72,14 +74,42 @@ fi
 echo ""
 echo "EPOCHS: $num_train_epochs"
 
+# Ask for LoRA option
+echo ""
+echo "Enable LoRA training? (y/n)"
+read enable_lora_input
+if [[ "$enable_lora_input" == "y" || "$enable_lora_input" == "Y" ]]; then
+    enable_lora="True"
+    lora_suffix="_lora"
+else
+    enable_lora="False"
+    lora_suffix=""
+fi
+echo "LoRA training: $enable_lora"
+
+# Ask for placeholder token option
+echo ""
+echo "Add placeholder tokens? (y/n)"
+read add_plh_token_input
+if [[ "$add_plh_token_input" == "y" || "$add_plh_token_input" == "Y" ]]; then
+    add_plh_token="True"
+    plh_token_suffix="_add_plh_token"
+else
+    add_plh_token="False"
+    plh_token_suffix=""
+fi
+echo "Add placeholder tokens: $add_plh_token"
+
 # Run the selected task
 data_path_base_name=$(basename "$selected_data_path" .json)
-output_dir=/path/to/LLM_checkpoints/OPI_IT/${model_name}_${data_path_base_name}_e${num_train_epochs}
+output_dir=/path/to/LLM_checkpoints/OPI_IT/${model_name}_${data_path_base_name}_e${num_train_epochs}${plh_token_suffix}${lora_suffix}
 echo "OUTPUT_DIR: $output_dir"
 
 deepspeed train/train_one4all.py \
     --deepspeed configs/zero3.json \
     --model_name_or_path $selected_model_path \
+    --enable_lora $enable_lora \
+    --add_plh_token $add_plh_token \
     --data_path $selected_data_path \
     --bf16 True \
     --output_dir $output_dir \

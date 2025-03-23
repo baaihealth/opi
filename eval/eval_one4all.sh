@@ -4,6 +4,8 @@
 model_names=(
     "Galactica-6.7B"
     "Llama-3.1-8B-Instruct"
+    "DeepSeek-R1-Distill-Llama-8B"
+    "DeepSeek-R1-Distill-Qwen-14B"
 )
 
 # Storing model names as an array

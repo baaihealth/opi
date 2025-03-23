@@ -1,16 +1,15 @@
 import os
-import re
 import json
 import torch
 import tqdm
-import yaml
-import hydra
-from hydra import initialize, compose
-from omegaconf import DictConfig, OmegaConf
-from transformers import LlamaForCausalLM, LlamaTokenizer, AutoTokenizer,AutoModelForCausalLM
-import sys;sys.path.append("./OPI") 
+# import hydra
+# from hydra import initialize, compose
+import sys;sys.path.append(".") 
 from utils import jdump
+from omegaconf import DictConfig, OmegaConf
+from transformers import AutoTokenizer,AutoModelForCausalLM
 from transformers import StoppingCriteria, GenerationConfig
+from peft import PeftModel, PeftConfig
 
 class KeywordsStoppingCriteria(StoppingCriteria):
     def __init__(self, keywords, tokenizer, input_ids):
@@ -62,7 +61,7 @@ def generate_prompt(prompt_instructions):
         ),
     }
     prompt_input, prompt_no_input = PROMPT_DICT["prompt_input"], PROMPT_DICT["prompt_no_input"]
-    instruction, input_data = prompt_instructions["instruction"], prompt_instructions['instances'][0]["input"]
+    instruction, input_data = prompt_instructions["instruction"], prompt_instructions['instances'][0]["input"] if 'instances' in prompt_instructions else prompt_instructions["input"]
     
     if input_data == "":
         input_data = '<noinput>'
@@ -73,43 +72,79 @@ def generate_prompt(prompt_instructions):
 
 def main(cfg: DictConfig):
     root_dir = '/path/to/LLM_checkpoints_or_test_files'
-    os.makedirs(f'latest_eval_results/{os.path.basename(cfg.model.name)}', exist_ok=True)
 
     # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model_path = os.path.join(root_dir, cfg.model.name)
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    if 'lora' in cfg.model.name:
+        config = PeftConfig.from_pretrained(os.path.join(root_dir, cfg.model.name))
+        base_model_name_or_path = config.base_model_name_or_path
+        os.makedirs(f'latest_eval_results/{os.path.basename(cfg.model.name)}', exist_ok=True)
+    else:
+        base_model_name_or_path = os.path.join(root_dir, cfg.model.name)
+        os.makedirs(f'latest_eval_results/{os.path.basename(cfg.model.name)}', exist_ok=True)
+
     base_model = AutoModelForCausalLM.from_pretrained(
-        model_path, 
+        base_model_name_or_path, 
         load_in_8bit=False,
         torch_dtype=torch.float16,
         low_cpu_mem_usage=True,
         device_map='auto',
     )
-
-    model_vocab_size = base_model.get_input_embeddings().weight.size(0)
-    tokenizer_vocab_size = len(tokenizer)
-    print(f"Vocab of the base model: {model_vocab_size}")
-    print(f"Vocab of the tokenizer: {tokenizer_vocab_size}")
-
-    if model_vocab_size != tokenizer_vocab_size:
-        assert tokenizer_vocab_size > model_vocab_size
-        print("Resize model embeddings to fit tokenizer")
-        base_model.resize_token_embeddings(tokenizer_vocab_size)
-
-    model = base_model
+    base_model_tokenizer = AutoTokenizer.from_pretrained(base_model_name_or_path)
+    tokenizer = AutoTokenizer.from_pretrained(os.path.join(root_dir, cfg.model.name))
+    print('base_model_tokenizer.vocab_size:', len(base_model_tokenizer.get_vocab())) #base model 151665
+    print('tokenizer.vocab_size:', len(tokenizer.get_vocab())) #151667 = 151665 + 2 added tokens
+    
+    if 'lora' in cfg.model.name:
+        lora_path = os.path.join(root_dir, cfg.model.name)
+        print(f"Loading LoRA adapter from {lora_path}")
+        model = PeftModel.from_pretrained(
+            base_model,
+            lora_path,
+            torch_dtype=torch.float16,
+            device_map='auto',
+        )
+        try:
+            print("Merging LoRA weights into base model...")
+            model = model.merge_and_unload()
+            print("LoRA weights merged successfully")
+        except Exception as e:
+            print(f"Error merging LoRA weights: {e}")
+            print("Continuing with unmerged model")
+    else:
+        model = base_model
+    
+    # model_vocab_size = base_model.get_input_embeddings().weight.size(0) #152064
+    if len(base_model_tokenizer.get_vocab()) < len(tokenizer.get_vocab()):
+        print("Resizing model embeddings to fit tokenizer")
+        model.resize_token_embeddings(len(tokenizer.get_vocab()))
+    
     model.eval()
     
-    if any(keyword in cfg.model.name.lower() for keyword in ['llama-3', 'llama3', 'llama_3']):
+    if any(keyword in cfg.model.name.lower() for keyword in ['llama-3', 'llama3', 'llama_3', 'deepseek']):
         terminators = [
             tokenizer.eos_token_id,
             tokenizer.convert_tokens_to_ids("<|eot_id|>")
         ]
+
+        terminators = [t for t in terminators if t is not None]
+        if not terminators:
+            terminators = [tokenizer.eos_token_id]
         eos_token_id = terminators
         pad_token_id = tokenizer.eos_token_id
     elif any(keyword in cfg.model.name.lower() for keyword in ['galactica', 'galai']):
-        eos_token_id=tokenizer.eos_token_id
-        pad_token_id=tokenizer.pad_token_id
+        eos_token_id = tokenizer.eos_token_id
+        pad_token_id = tokenizer.pad_token_id
 
+        if eos_token_id is None:
+            eos_token_id = tokenizer.convert_tokens_to_ids("</s>")  # 通常 </s> 的 ID 是 2
+        if pad_token_id is None:
+            pad_token_id = eos_token_id
+    else:
+        eos_token_id = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else 2
+        pad_token_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else eos_token_id
+    
+    print(f"Using eos_token_id: {eos_token_id}, pad_token_id: {pad_token_id}")
+    
     genaration_cfg = GenerationConfig(
         temperature=0.2,
         top_k=50,
@@ -136,10 +171,12 @@ def main(cfg: DictConfig):
                 inputs = tokenizer(input_text, return_tensors="pt").to(model.device)
                 input_ids=inputs["input_ids"]
                 attention_mask=inputs["attention_mask"]
-                if any(keyword in cfg.model.name.lower() for keyword in ['llama-3', 'llama3', 'llama_3']):
-                    stopping_criteria = KeywordsStoppingCriteria(['<|eot_id|>'],tokenizer, input_ids)
+                if any(keyword in cfg.model.name.lower() for keyword in ['llama-3', 'llama3', 'llama_3', 'deepseek']):
+                    stopping_criteria = KeywordsStoppingCriteria(['<|eot_id|>'], tokenizer, input_ids)
                 elif any(keyword in cfg.model.name.lower() for keyword in ['galactica', 'galai']):
-                    stopping_criteria = KeywordsStoppingCriteria(['</s>'],tokenizer, input_ids)
+                    stopping_criteria = KeywordsStoppingCriteria(['</s>'], tokenizer, input_ids)
+                else:
+                    stopping_criteria = KeywordsStoppingCriteria([tokenizer.eos_token or '</s>'], tokenizer, input_ids)
                 
                 generation_output = model.generate(
                     input_ids=input_ids,
@@ -155,8 +192,8 @@ def main(cfg: DictConfig):
                 
                 # Save results
                 results.append({"Instruction": example["instruction"],
-                                "input": example["instances"][0]['input'], 
-                                "target": example["instances"][0]['output'].replace(' ; ','; '),
+                                "input": example["instances"][0]['input'] if "instances" in example else example["input"], 
+                                "target": example["instances"][0]['output'].replace(' ; ','; ') if "instances" in example else example["output"].replace(' ; ','; '),
                                 "predict": decoded_output})
             
                 # Save to output file
@@ -205,11 +242,12 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         raise ValueError(
             "Please specify the model name and task name as command-line arguments.\n"
-            "Available Models:\n"
+            "Available Models can be defined in eval/eval_one4all.sh, such as:\n"
             "  - Galactica-6.7B\n"
             "  - Llama-3.1-8B-Instruct\n"
+            "  - ..."
             "\n"
-            "Available Task names:\n"
+            "Available Task names can be defined in eval/tasks.yaml, such as:\n"
             "  - all_task_Llama-3.1-8B-Instruct\n"
             "  - all_task_OPI_full_1.61M\n"
             "  - EC_number\n"
