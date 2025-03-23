@@ -14,9 +14,11 @@ Following the prompts in the terminal, enter a NUMBER to select a model and a ta
 **Example:**
 ```
 Enter a model number to select a MODEL NAME:
-1) Llama3.1-8B-Instruct
+1) DeepSeek-R1-Distill-Llama-8B
 2) Galactica-6.7B
-#? 1
+3) Llama-3.1-8B-Instruct
+4) DeepSeek-R1-Distill-Qwen-14B
+#? 3
 
 MODEL NAME selected: Llama3.1-8B-Instruct
 MODEL PATH: /path/to/LLM_checkpoints/Llama3.1/Llama-3.1-8B-Instruct
@@ -33,5 +35,13 @@ TASK NAME selected: Subcellular_localization
 DATA PATH: /path/to/OPI_DATA/SU/Subcellular_localization/train/subcell_loc_train.json
 
 EPOCHS: 3
-OUTPUT_DIR: /path/to/LLM_checkpoints/OPI_IT/Llama3.1-8B-Instruct_subcell_loc_train_e3
+
+Enable LoRA training? (y/n) # choose whether to use LoRA tuning
+y
+LoRA training: True
+
+Add placeholder tokens? (y/n) # choose whether to add placeholder tokens for protein sequences
+y
+Add placeholder tokens: True
+OUTPUT_DIR: /path/to/LLM_checkpoints/OPI_IT/Llama-3.1-8B-Instruct_subcell_loc_train_e3_add_plh_token_lora
 ```
