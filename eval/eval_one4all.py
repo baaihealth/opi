@@ -242,12 +242,12 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         raise ValueError(
             "Please specify the model name and task name as command-line arguments.\n"
-            "Available Models can be defined in eval/eval_one4all.sh, such as:\n"
+            "Available models can be defined in eval/eval_one4all.sh, such as:\n"
             "  - Galactica-6.7B\n"
             "  - Llama-3.1-8B-Instruct\n"
             "  - ..."
             "\n"
-            "Available Task names can be defined in eval/tasks.yaml, such as:\n"
+            "Available task names can be defined in eval/tasks.yaml, such as:\n"
             "  - all_task_Llama-3.1-8B-Instruct\n"
             "  - all_task_OPI_full_1.61M\n"
             "  - EC_number\n"
