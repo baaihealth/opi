@@ -241,10 +241,10 @@ We use the [FastChat](https://github.com/lm-sys/FastChat) platform to visually d
 ![OPI Demo](./demo_figures/OPI_demo.gif)
 
 ## Acknowledgement
-The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca).  
-Some codes are adapted from [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).  
-Llama-3: [Llama-3](https://github.com/meta-llama/llama3)  
+The codes are adapted from [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) and [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca).  
 Galactica: [Galactica](https://github.com/paperswithcode/galai)  
+Llama-3.1: [Llama-3.1](https://github.com/meta-llama/llama3)  
+DeepSeek: [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1)
 
 ## Contact Information
 For help or issues using the repos, please submit a GitHub issue.  
