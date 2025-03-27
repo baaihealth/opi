@@ -44,18 +44,18 @@ def process_json_file(json_file_path):
         if isinstance(output, str):
             if any(keyword in json_file_path for keyword in ['EC_number', 'go_terms', 'keywords','gene', 'domain']):
                 output = output.split('; ')
-            elif any(keyword in json_file_path for keyword in ['function', 'location', 'ss']):
+            elif any(keyword in json_file_path for keyword in ['function', 'subcell_loc', 'ss']):
                 output = [output]
         if isinstance(target, str):
             if any(keyword in json_file_path for keyword in ['EC_number', 'go_terms', 'keywords','gene', 'domain']):
                 target = target.split('; ')
-            elif any(keyword in json_file_path for keyword in ['function', 'location', 'ss']):
+            elif any(keyword in json_file_path for keyword in ['function', 'subcell_loc', 'ss']):
                 target = [target]
         
         if 'function' in json_file_path:
             rouge_l = calculate_rouge_l(output, target)
             rouge_ls.append(rouge_l)
-        elif 'location' in json_file_path:
+        elif 'subcell_loc' in json_file_path:
             accuracy, _,_,_ = calculate_metrics(output, target)
             accuracies.append(accuracy)
         else:
@@ -68,7 +68,7 @@ def process_json_file(json_file_path):
     if 'function' in json_file_path:
         mean_rouge_l = sum(rouge_ls) / len(rouge_ls) if rouge_ls else 0
         return {'ROUGE-L': round(mean_rouge_l,4)}, None
-    elif 'location' in json_file_path:
+    elif 'subcell_loc' in json_file_path:
         mean_accuracy = sum(accuracies) / len(accuracies) if accuracies else 0 
         return {'Accuracy': round(mean_accuracy,4)}, None
     else:
@@ -89,7 +89,7 @@ def main(eval_res_path):
             if 'function' in file_path:
                 metrics, _ = process_json_file(file_path)
                 results[file_name] = {'ROUGE-L': metrics['ROUGE-L']}
-            elif 'location' in file_path:
+            elif 'sub'ce'l'l' in file_path:
                 metrics, _ = process_json_file(file_path)
                 results[file_name] = {'Accuracy': metrics['Accuracy']}
             elif 'fold_type' in file_path:
